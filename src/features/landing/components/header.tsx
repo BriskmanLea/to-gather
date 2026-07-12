@@ -5,7 +5,11 @@ const navigationItems = [
     {
         label: "Features",
         href: "#features",
-    }
+    },
+    {
+        label: "About",
+        href: "#about",
+    },
 ];
 
 export function Header() {
@@ -14,7 +18,7 @@ export function Header() {
             <Container className="flex items-center justify-between h-20">
                 <a
                     href="#"
-                    className="text-xl font-bold tracking-tight text-grey-800"
+                    className="text-xl font-bold tracking-tight text-grey-800 focus-visible:outline-2 focus-visible:outline-primary-800 focus-visible:outline-offset-2"
                 >
                     ToGather
                 </a>
@@ -27,7 +31,7 @@ export function Header() {
                         <a
                             key={item.href}
                             href={item.href}
-                            className="text-sm font-medium text-grey-500 transition-colors hover:text-secondary-700"
+                            className="text-sm font-medium text-grey-500 transition-colors hover:text-secondary-700 focus-visible:outline-2 focus-visible:outline-primary-800 focus-visible:outline-offset-2"
                         >
                             {item.label}
                         </a>
