@@ -11,7 +11,7 @@ export function Footer() {
                 <div className="flex gap-5">
                     <a
                         href="#features"
-                        className="transition-colors hover:text-secondary-700"
+                        className="transition-colors hover:text-secondary-700 focus-visible:outline-2 focus-visible:outline-primary-800 focus-visible:outline-offset-2"
                     >
                         Features
                     </a>
@@ -20,7 +20,7 @@ export function Footer() {
                         href="https://github.com/BriskmanLea/to-gather"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="transition-colors hover:text-secondary-700"
+                        className="transition-colors hover:text-secondary-700 focus-visible:outline-2 focus-visible:outline-primary-800 focus-visible:outline-offset-2"
                     >
                         GitHub
                     </a>

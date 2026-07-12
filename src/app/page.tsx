@@ -1,3 +1,4 @@
+import { AboutSection } from "@/features/landing/components/about-section";
 import { CallToAction } from "@/features/landing/components/call-to-action";
 import { FeaturesSection } from "@/features/landing/components/features-section";
 import { Footer } from "@/features/landing/components/footer";
@@ -10,6 +11,7 @@ export default function HomePage() {
       <Header />
       <HeroSection />
       <FeaturesSection />
+      <AboutSection />
       <CallToAction />
       <Footer />
     </main>
