@@ -1,11 +1,17 @@
+import { CallToAction } from "@/features/landing/components/call-to-action";
+import { FeaturesSection } from "@/features/landing/components/features-section";
+import { Footer } from "@/features/landing/components/footer";
+import { Header } from "@/features/landing/components/header";
+import { HeroSection } from "@/features/landing/components/hero-section";
+
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-background px-6 py-10">
-      <section className="flex flex-col gap-6 max-w-5xl  mx-auto">
-        <h1 className="text-4xl font-bold tracking-tight">
-          Plan, track and improve your life in one place
-        </h1>
-      </section>
+    <main className="min-h-screen bg-background text-foreground">
+      <Header />
+      <HeroSection />
+      <FeaturesSection />
+      <CallToAction />
+      <Footer />
     </main>
   );
 }
