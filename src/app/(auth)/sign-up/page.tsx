@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { SignUpForm } from "@/features/auth/components/sign-up-form";
+
 export default function SignUpPage() {
     return (
         <>
@@ -18,7 +20,7 @@ export default function SignUpPage() {
             </div>
 
             <div className="mt-8">
-
+                <SignUpForm />
             </div>
 
             <p className="flex items-center justify-center gap-1 mt-6 text-center text-sm text-grey-500">

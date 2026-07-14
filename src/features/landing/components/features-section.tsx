@@ -1,4 +1,4 @@
-import { Container } from "@/shared/ui/container";
+import { Container } from "@/shared/ui";
 import { landingFeatures } from "../data/features";
 
 export function FeaturesSection() {

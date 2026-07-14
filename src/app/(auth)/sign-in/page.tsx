@@ -18,7 +18,7 @@ export default function SignInPage() {
             </div>
 
             <div className="mt-8">
-                {/* Форму добавим следующим шагом */}
+
             </div>
 
             <p className="flex items-center justify-center gap-1 mt-6 text-center text-sm text-grey-500">

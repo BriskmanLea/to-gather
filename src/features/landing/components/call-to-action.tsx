@@ -1,5 +1,4 @@
-import { ButtonLink } from "@/shared/ui/button-link";
-import { Container } from "@/shared/ui/container";
+import { ButtonLink, Container } from "@/shared/ui";
 
 export function CallToAction() {
     return (

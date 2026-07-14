@@ -1,4 +1,4 @@
-import { Container } from "@/shared/ui/container";
+import { Container } from "@/shared/ui";
 
 export function Footer() {
     const currentYear = new Date().getFullYear();
