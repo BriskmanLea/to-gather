@@ -1,4 +1,4 @@
-import { Button } from "@/shared/ui/button";
+import { ButtonLink } from "@/shared/ui/button-link";
 import { Container } from "@/shared/ui/container";
 import { DashboardPreview } from "./dashboard-preview";
 
@@ -20,7 +20,7 @@ export function HeroSection() {
                             Organize your tasks, goals, notes, habits and personal progress through one customizable workspace.
                         </p>
 
-                        <Button className="max-w-xs w-full">Start planning</Button>
+                        <ButtonLink href="/sign-up" className="w-full sm:w-fit">Start planning</ButtonLink>
                     </div>
 
                     <DashboardPreview />

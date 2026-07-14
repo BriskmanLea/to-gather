@@ -1,26 +1,26 @@
-import type { ButtonHTMLAttributes, PropsWithChildren } from "react";
+import Link, { type LinkProps } from "next/link";
+import type { PropsWithChildren } from "react";
 import { getButtonClassName, type ButtonVariant } from "./button-styles";
 
-type ButtonProps = PropsWithChildren<
-    ButtonHTMLAttributes<HTMLButtonElement> & {
+type ButtonLinkProps = PropsWithChildren<
+    LinkProps & {
+        className?: string;
         variant?: ButtonVariant;
     }
 >;
 
-export function Button({
+export function ButtonLink({
     children,
-    variant = "primary",
     className = "",
-    type = "button",
+    variant = "primary",
     ...props
-}: ButtonProps) {
+}: ButtonLinkProps) {
     return (
-        <button
-            type={type}
+        <Link
             className={getButtonClassName(variant, className)}
             {...props}
         >
             {children}
-        </button>
+        </Link>
     );
 }
