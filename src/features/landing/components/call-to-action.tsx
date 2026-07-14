@@ -1,5 +1,4 @@
-import { Button } from "@/shared/ui/button";
-import { Container } from "@/shared/ui/container";
+import { ButtonLink, Container } from "@/shared/ui";
 
 export function CallToAction() {
     return (
@@ -18,7 +17,7 @@ export function CallToAction() {
                         Choose your modules and keep your plans, progress and reflections in one connected workspace.
                     </p>
 
-                    <Button className="mt-6">Create your workspace</Button>
+                    <ButtonLink href="/sign-up" className="mt-6">Create your workspace</ButtonLink>
                 </div>
             </Container>
         </section>
