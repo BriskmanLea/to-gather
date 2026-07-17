@@ -1,5 +1,5 @@
 import { ButtonLink, Container } from "@/shared/ui";
-import { DashboardPreview } from "./dashboard-preview";
+import { DashboardPreview } from "./DashboardPreview";
 
 export function HeroSection() {
     return (

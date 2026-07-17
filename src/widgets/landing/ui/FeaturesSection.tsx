@@ -1,5 +1,5 @@
 import { Container } from "@/shared/ui";
-import { landingFeatures } from "../data/features";
+import { landingFeatures } from "../model/features";
 
 export function FeaturesSection() {
     return (
