@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { signUpSchema, type SignUpFormValues } from "@/features/auth/schemas/sign-up-schema";
+import { signUpSchema, type SignUpFormValues } from "../model/sign-up-schema";
 import { Button, FormField, Input } from "@/shared/ui";
 
 export function SignUpForm() {
