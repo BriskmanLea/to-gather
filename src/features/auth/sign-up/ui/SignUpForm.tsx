@@ -14,6 +14,7 @@ export function SignUpForm() {
         resolver: zodResolver(signUpSchema),
         defaultValues: {
             name: "",
+            lastName: "",
             email: "",
             password: "",
             confirmPassword: "",
@@ -43,6 +44,22 @@ export function SignUpForm() {
                     aria-invalid={Boolean(errors.name)}
                     aria-describedby={errors.name ? "name-error" : undefined}
                     {...register("name")}
+                />
+            </FormField>
+
+            <FormField
+                htmlFor="lastName"
+                label="Last name"
+                error={errors.lastName?.message}
+            >
+                <Input
+                    id="lastName"
+                    type="text"
+                    autoComplete="last-name"
+                    placeholder="Your last name"
+                    aria-invalid={Boolean(errors.lastName)}
+                    aria-describedby={errors.lastName ? "lastName-error" : undefined}
+                    {...register("lastName")}
                 />
             </FormField>
 
