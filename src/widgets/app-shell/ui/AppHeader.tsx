@@ -6,45 +6,51 @@ type AppHeaderProps = {
     onMenuOpen: () => void;
 };
 
+function getInitials(user: CurrentUser) {
+    return `${user.firstName.charAt(0)}${user.lastName.charAt(0)}`.toUpperCase();
+}
+
 export function AppHeader({ user, onMenuOpen }: AppHeaderProps) {
-    const { firstName, lastName } = user;
-    const initials = `${firstName[0]}${lastName[0]}`;
+    const initials = getInitials(user);
 
     return (
-        <header className="sticky top-0 z-30 flex items-center justify-between h-20 border-b border-neutral-400/60 bg-neutral-100/90 px-4 backdrop-blur-sm lg:px-8">
-            <div className="flex items-center gap-3">
-                <button
-                    type="button"
-                    onClick={onMenuOpen}
-                    aria-label="Open navigation"
-                    className="flex lg:hidden items-center justify-center rounded-xl border border-neutral-400 bg-white text-xl text-grey-800 transition-colors hover:border-secondary-500 size-10"
+        <header className="flex items-center justify-between h-16 px-4 lg:px-8 border-b border-neutral-300 bg-white">
+            <button
+                type="button"
+                onClick={onMenuOpen}
+                aria-label="Open navigation"
+                className="p-2 rounded-xl text-grey-700 transition-colors hover:bg-neutral-100 lg:hidden"
+            >
+                ☰
+            </button>
+
+            <div className="flex items-center gap-3 ml-auto">
+                <Link
+                    href="/notifications"
+                    aria-label="Notifications"
+                    className="p-2 rounded-xl text-grey-600 transition-colors hover:bg-neutral-100"
                 >
-                    ☰
-                </button>
-
-                <div>
-                    <p className="text-sm text-grey-500">Personal workspace</p>
-
-                    <p className="font-semibold text-grey-800">Home</p>
-                </div>
-            </div>
-
-            <div className="flex items-center gap-3">
-                <button
-                    type="button"
-                    aria-label="Open notifications"
-                    className="relative flex items-center justify-center rounded-full border border-neutral-400 bg-white text-grey-500 transition-colors hover:border-secondary-500 hover:text-secondary-700  size-10"
-                >
-                    {/* TODO: Add notification icon */}
-                </button>
+                    🔔
+                </Link>
 
                 <Link
-                    href="/settings"
-                    aria-label="Open profile settings"
-                    className="flex items-center justify-center rounded-full bg-secondary-100 text-sm font-semibold text-secondary-800 transition-colors hover:bg-secondary-200 size-10"
+                    href="/profile"
+                    aria-label="Profile"
+                    className="flex items-center gap-3 p-1.5 rounded-xl transition-colors hover:bg-neutral-100"
                 >
-                    {/* TODO: Add profile icon */}
-                    {initials}
+                    <span className="flex items-center justify-center size-9 rounded-full bg-secondary-500 text-sm font-semibold text-white">
+                        {initials}
+                    </span>
+
+                    <span className="hidden text-left sm:block">
+                        <span className="block text-sm font-semibold text-grey-800">
+                            {user.firstName} {user.lastName}
+                        </span>
+
+                        <span className="block text-xs text-grey-500">
+                            {user.email}
+                        </span>
+                    </span>
                 </Link>
             </div>
         </header>

@@ -2,8 +2,6 @@ import { GoalsCard, HabitsCard, Overview, QuickActionsCard, TasksCard, Welcome, 
 import { getCurrentUser } from "@/widgets/current-user";
 
 export async function HomePage() {
-    const data = await getHomeData();
-
     const [user, homeData] = await Promise.all([
         getCurrentUser(),
         getHomeData(),
@@ -16,12 +14,12 @@ export async function HomePage() {
             <Overview items={homeData.overview} />
 
             <section className="grid gap-6 xl:grid-cols-[1.4fr_1fr] mt-6">
-                <TasksCard tasks={data.tasks} />
-                <HabitsCard habits={data.habits} />
+                <TasksCard tasks={homeData.tasks} />
+                <HabitsCard habits={homeData.habits} />
             </section>
 
             <section className="grid gap-6 xl:grid-cols-[1.4fr_1fr] mt-6">
-                <GoalsCard goals={data.goals} />
+                <GoalsCard goals={homeData.goals} />
                 <QuickActionsCard />
             </section>
         </div>
