@@ -3,6 +3,7 @@ import { ButtonLink } from "./Button/button-link";
 import { Input } from "./Input/input";
 import { FormField } from "./FormField/form-field";
 import { Container } from "./Container/container";
+import { Dropdown } from "./Dropdown/dropdown";
 
 export {
     Button,
@@ -10,4 +11,5 @@ export {
     Input,
     FormField,
     Container,
+    Dropdown,
 };
