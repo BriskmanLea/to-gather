@@ -4,6 +4,10 @@ import { Input } from "./Input/input";
 import { FormField } from "./FormField/form-field";
 import { Container } from "./Container/container";
 import { Dropdown } from "./Dropdown/dropdown";
+import { DatePicker } from "./DatePicker/datePicker";
+import { TimePicker } from "./TimePicker/timePicker";
+import { Textarea } from "./Textarea/textarea";
+import { Modal } from "./Modal/modal";
 
 export {
     Button,
@@ -12,4 +16,8 @@ export {
     FormField,
     Container,
     Dropdown,
+    DatePicker,
+    TimePicker,
+    Textarea,
+    Modal,
 };
