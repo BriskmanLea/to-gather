@@ -1,2 +1,2 @@
 export { getCurrentUser } from "./api";
-export type { CurrentUser } from "./model/types";
+export type { CurrentUser, User } from "./model/types";

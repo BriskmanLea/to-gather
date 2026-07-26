@@ -1,7 +1,4 @@
-export type CurrentUser = {
-    id: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    avatar?: string;
-};
+import type { User } from "@/entities/user";
+
+export type { User };
+export type CurrentUser = User;
