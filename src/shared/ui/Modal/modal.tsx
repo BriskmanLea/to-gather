@@ -40,6 +40,9 @@ export function Modal({ open, title, children, onClose, footer }: ModalProps) {
             onClick={onClose}
         >
             <div
+                role="dialog"
+                aria-modal="true"
+                aria-label={title}
                 className="w-full max-w-lg rounded-2xl bg-white shadow-2xl"
                 onClick={e => e.stopPropagation()}
             >
@@ -65,7 +68,7 @@ export function Modal({ open, title, children, onClose, footer }: ModalProps) {
                 </div>
 
                 {footer && (
-                    <div className="flex justify-end gap-3 border-t border-primary-100 px-6 py-4">
+                    <div className="flex justify-center gap-3 border-t border-primary-100 px-6 py-4">
                         {footer}
                     </div>
                 )}

@@ -1,4 +1,5 @@
-export { getTask, getTasks } from "./api";
+export { createTask, deleteTask, getTask, getTasks, toggleTaskStatus, updateTask } from "./api";
+export type { CreateTaskInput, UpdateTaskInput } from "./api";
 
 export { TASK_PRIORITIES, TASK_STATUSES, TASK_VIEWS } from "./model";
 

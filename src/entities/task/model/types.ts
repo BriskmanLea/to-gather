@@ -7,7 +7,7 @@ export type Task = {
     title: string;
     description?: string;
     status: TaskStatus;
-    priority: TaskPriority;
+    priority: TaskPriority | null;
     /** Local calendar date as `YYYY-MM-DD` */
     date: string;
     /** Local time as `HH:mm`, or null when unset */

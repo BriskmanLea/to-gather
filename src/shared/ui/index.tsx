@@ -8,6 +8,7 @@ import { DatePicker } from "./DatePicker/datePicker";
 import { TimePicker } from "./TimePicker/timePicker";
 import { Textarea } from "./Textarea/textarea";
 import { Modal } from "./Modal/modal";
+import { IconMenu } from "./IconMenu/icon-menu";
 
 export {
     Button,
@@ -20,4 +21,5 @@ export {
     TimePicker,
     Textarea,
     Modal,
+    IconMenu,
 };

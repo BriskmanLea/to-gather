@@ -22,6 +22,7 @@ export function SignUpForm() {
     });
 
     async function onSubmit(values: SignUpFormValues) {
+        // TODO(backend): auth flow
         console.log(values);
     }
 
