@@ -1,3 +1,3 @@
-export { TASK_PRIORITIES, TASK_STATUSES, TASK_VIEWS } from "./constants";
+export { DAY_DISPLAY_MODES, TASK_PRIORITIES, TASK_STATUSES, TASK_VIEWS } from "./constants";
 
-export type { Task, TaskPriority, TaskStatus, TasksView, TaskFiltersState } from "./types";
+export type { DayDisplayMode, Task, TaskPriority, TaskStatus, TasksView, TaskFiltersState } from "./types";

@@ -1,4 +1,4 @@
-import type { TasksView } from "./types";
+import type { DayDisplayMode, TasksView } from "./types";
 
 export { TASK_PRIORITIES, TASK_STATUSES } from "@/entities/task";
 
@@ -17,5 +17,19 @@ export const TASK_VIEWS: ReadonlyArray<{
     {
         value: "month",
         label: "Month",
+    },
+];
+
+export const DAY_DISPLAY_MODES: ReadonlyArray<{
+    value: DayDisplayMode;
+    label: string;
+}> = [
+    {
+        value: "list",
+        label: "List",
+    },
+    {
+        value: "schedule",
+        label: "Schedule",
     },
 ];

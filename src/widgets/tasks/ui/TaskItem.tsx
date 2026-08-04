@@ -6,6 +6,9 @@ import { IconMenu } from "@/shared/ui";
 
 type Props = {
     task: Task;
+    compact?: boolean;
+    dragEnabled?: boolean;
+    isDragging?: boolean;
     onEdit: (task: Task) => void;
     onDelete: (task: Task) => void;
     onToggleComplete: (task: Task) => void;
@@ -23,7 +26,7 @@ const priorityLabel = {
     low: "Low",
 };
 
-export function TaskItem({ task, onEdit, onDelete, onToggleComplete }: Props) {
+export function TaskItem({ task, compact = false, dragEnabled = false, isDragging = false, onEdit, onDelete, onToggleComplete }: Props) {
     const completed = task.status === "completed";
 
     function handleCardKeyDown(event: KeyboardEvent<HTMLElement>) {
@@ -40,9 +43,15 @@ export function TaskItem({ task, onEdit, onDelete, onToggleComplete }: Props) {
             aria-label={completed ? `Mark as to do: ${task.title}` : `Mark as completed: ${task.title}`}
             onClick={() => onToggleComplete(task)}
             onKeyDown={handleCardKeyDown}
-            className={`cursor-pointer rounded-2xl border p-3 md:p-4 shadow-sm transition-all hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-500 ${completed ? "border-neutral-400 bg-neutral-100 opacity-80" : "border-primary-200 bg-white hover:border-primary-500"}`}
+            className={[
+                "border shadow-sm transition-all hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-500",
+                compact ? "rounded-xl p-2.5" : "rounded-2xl p-3 md:p-4",
+                dragEnabled ? "cursor-grab active:cursor-grabbing" : "cursor-pointer",
+                completed ? "border-neutral-400 bg-neutral-100" : "border-primary-200 bg-white hover:border-primary-500",
+                isDragging ? "opacity-40" : completed ? "opacity-80" : ""
+            ].join(" ")}
         >
-            <div className="flex items-center gap-2 md:gap-4">
+            <div className={`flex items-center ${compact ? "gap-2" : "gap-2 md:gap-4"}`}>
                 <button
                     type="button"
                     onClick={(event) => {
@@ -52,36 +61,43 @@ export function TaskItem({ task, onEdit, onDelete, onToggleComplete }: Props) {
                     aria-label={completed ? "Mark as to do" : "Mark as completed"}
                     aria-pressed={completed}
                     className={[
-                        "mt-1 flex size-5 shrink-0 items-center justify-center rounded-full border text-xs transition-colors",
+                        "flex shrink-0 items-center justify-center rounded-full border text-xs transition-colors",
+                        compact ? "size-4" : "mt-1 size-5",
                         completed ? "border-secondary-500 bg-secondary-500 text-white" : "border-neutral-400 bg-white hover:border-secondary-500"
                     ].join(" ")}
                 >
                     {completed ? "✓" : ""}
                 </button>
 
-                <div className="flex flex-col gap-2 min-w-0 flex-1">
+                <div className={`flex min-w-0 flex-1 flex-col ${compact ? "gap-1" : "gap-2"}`}>
                     <div className="flex flex-wrap items-center gap-2 no-wrap">
                         {task.time ? (
-                            <span className="inline-flex items-center p-1 md:px-3 text-xs font-semibold text-secondary-700 whitespace-nowrap rounded-full bg-secondary-100">
+                            <span
+                                className={`inline-flex items-center whitespace-nowrap rounded-full bg-secondary-100 font-semibold text-secondary-700 ${compact ? "px-2 py-0.5 text-[11px]" : "p-1 text-xs md:px-3"}`}
+                            >
                                 🕒 {task.time}
                             </span>
                         ) : null}
 
                         <h3
-                            className={`text-base md:text-lg leading-tight font-semibold ${completed ? "text-grey-500 line-through" : "text-grey-800"}`}
+                            className={`leading-tight font-semibold ${compact ? "text-sm" : "text-base md:text-lg"} ${completed ? "text-grey-500 line-through" : "text-grey-800"}`}
                         >
                             {task.title}
                         </h3>
                     </div>
 
-                    {task.description ? (
-                        <p className={`text-sm leading-6 ${completed ? "text-grey-500 line-through" : "text-grey-500"}`}>
+                    {!compact && task.description ? (
+                        <p
+                            className={`text-sm leading-6 ${completed ? "text-grey-500 line-through" : "text-grey-500"}`}
+                        >
                             {task.description}
                         </p>
                     ) : null}
                 </div>
 
-                <div className="flex flex-col md:flex-row-reverse items-end md:items-center md:gap-2">
+                <div
+                    className={`flex items-end md:items-center ${compact ? "flex-row-reverse gap-1.5" : "flex-col md:flex-row-reverse md:items-center md:gap-2"}`}
+                >
                     <IconMenu
                         label={`Actions for ${task.title}`}
                         items={[
@@ -99,7 +115,7 @@ export function TaskItem({ task, onEdit, onDelete, onToggleComplete }: Props) {
 
                     {task.priority ? (
                         <span
-                            className={`rounded-full py-1 px-2 md:px-3 text-xs font-semibold ${priorityStyles[task.priority]} ${completed ? "opacity-60" : ""}`}
+                            className={`rounded-full font-semibold ${compact ? "px-2 py-0.5 text-[11px]" : "px-2 py-1 text-xs md:px-3"} ${priorityStyles[task.priority]} ${completed ? "opacity-60" : ""}`}
                         >
                             {priorityLabel[task.priority]}
                         </span>

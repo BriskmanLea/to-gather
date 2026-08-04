@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { Task, TaskPriority, TaskStatus, TasksView } from "@/widgets/tasks";
-import { createTask, deleteTask, toggleTaskStatus, updateTask, TasksHeader, TasksList, TasksSummary, TasksToolbar } from "@/widgets/tasks";
+import type { DayDisplayMode, Task, TaskPriority, TaskStatus, TasksView } from "@/widgets/tasks";
+import { createTask, deleteTask, toggleTaskStatus, updateTask, TasksDayModeToggle, TasksEmptyState, TasksHeader, TasksList, TasksSchedule, TasksSummary, TasksToolbar } from "@/widgets/tasks";
 import { filterTasks } from "@/widgets/tasks/lib/filterTasks";
 import { CreateTaskModal, type TaskFormValues } from "@/features/tasks/create";
 import { EditTaskModal } from "@/features/tasks/edit";
@@ -26,6 +26,7 @@ function toTaskInput(values: TaskFormValues) {
 export function TasksContent({ tasks: initialTasks }: TasksContentProps) {
     const [tasks, setTasks] = useState(initialTasks);
     const [view, setView] = useState<TasksView>("day");
+    const [dayDisplayMode, setDayDisplayMode] = useState<DayDisplayMode>("list");
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [search, setSearch] = useState("");
     const [status, setStatus] = useState<TaskStatus | "all">("all");
@@ -74,6 +75,14 @@ export function TasksContent({ tasks: initialTasks }: TasksContentProps) {
         );
     }
 
+    async function handleAssignTime(taskId: string, time: string | null) {
+        const current = tasks.find((task) => task.id === taskId);
+        if (!current || current.time === time) return;
+
+        const updated = await updateTask(taskId, { time });
+        setTasks(items => items.map(item => (item.id === updated.id ? updated : item)));
+    }
+
     return (
         <div className="flex flex-col gap-4 max-w-6xl mx-auto">
             <TasksHeader onCreateClick={() => setIsCreateOpen(true)} />
@@ -91,14 +100,35 @@ export function TasksContent({ tasks: initialTasks }: TasksContentProps) {
                 onPriorityChange={setPriority}
             />
 
-            <TasksSummary total={total} todo={todo} completed={completed} />
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <TasksSummary total={total} todo={todo} completed={completed} />
 
-            <TasksList
-                tasks={filteredTasks}
-                onEdit={setEditingTask}
-                onDelete={setDeletingTask}
-                onToggleComplete={handleToggleComplete}
-            />
+                {view === "day" ? (
+                    <TasksDayModeToggle
+                        value={dayDisplayMode}
+                        onChange={setDayDisplayMode}
+                    />
+                ) : null}
+            </div>
+
+            {filteredTasks.length === 0 ? (
+                <TasksEmptyState />
+            ) : view === "day" && dayDisplayMode === "schedule" ? (
+                <TasksSchedule
+                    tasks={filteredTasks}
+                    onEdit={setEditingTask}
+                    onDelete={setDeletingTask}
+                    onToggleComplete={handleToggleComplete}
+                    onAssignTime={handleAssignTime}
+                />
+            ) : (
+                <TasksList
+                    tasks={filteredTasks}
+                    onEdit={setEditingTask}
+                    onDelete={setDeletingTask}
+                    onToggleComplete={handleToggleComplete}
+                />
+            )}
 
             <CreateTaskModal
                 open={isCreateOpen}
