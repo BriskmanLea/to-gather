@@ -1,14 +1,9 @@
+import type { Task } from "@/entities/task";
+
 export type OverviewItem = {
     label: string;
     value: string;
     description: string;
-};
-
-export type Task = {
-    id: string;
-    title: string;
-    completed: boolean;
-    time?: string;
 };
 
 export type Habit = {
