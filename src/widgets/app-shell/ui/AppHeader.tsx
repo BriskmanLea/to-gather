@@ -25,13 +25,13 @@ export function AppHeader({ user, onMenuOpen }: AppHeaderProps) {
             </button>
 
             <div className="flex items-center gap-3 ml-auto">
-                <Link
+                {/* <Link
                     href="/notifications"
                     aria-label="Notifications"
                     className="p-2 rounded-xl text-grey-600 transition-colors hover:bg-neutral-100"
                 >
                     🔔
-                </Link>
+                </Link> */}
 
                 <Link
                     href="/profile"

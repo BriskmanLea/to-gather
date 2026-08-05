@@ -23,11 +23,7 @@ type NavigationLinkProps = {
     onClick?: () => void;
 };
 
-function NavigationLink({
-    item,
-    pathname,
-    onClick,
-}: NavigationLinkProps) {
+function NavigationLink({ item, pathname, onClick }: NavigationLinkProps) {
     const isActive = isNavigationItemActive(pathname, item.href);
 
     return (
@@ -53,7 +49,7 @@ type SidebarContentProps = {
 function SidebarContent({ pathname, onNavigate }: SidebarContentProps) {
     return (
         <>
-            <div className="flex items-center h-20 px-6 border-b border-neutral-400/60">
+            <div className="flex items-center h-16 px-6 border-b border-neutral-400/60">
                 <Link
                     href="/home"
                     onClick={onNavigate}
@@ -67,7 +63,7 @@ function SidebarContent({ pathname, onNavigate }: SidebarContentProps) {
                 aria-label="Main application navigation"
                 className="flex flex-col gap-1 flex-1 p-4"
             >
-                {mainNavigation.map((item) => (
+                {mainNavigation.map(item => (
                     <NavigationLink
                         key={item.href}
                         item={item}
@@ -79,9 +75,9 @@ function SidebarContent({ pathname, onNavigate }: SidebarContentProps) {
 
             <nav
                 aria-label="Secondary application navigation"
-                className="border-t border-neutral-400/60 p-4"
+                className="sticky bottom-0 p-4 border-t border-neutral-400/60"
             >
-                {secondaryNavigation.map((item) => (
+                {secondaryNavigation.map(item => (
                     <NavigationLink
                         key={item.href}
                         item={item}
