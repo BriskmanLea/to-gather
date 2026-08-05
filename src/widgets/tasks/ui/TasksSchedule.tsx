@@ -24,9 +24,7 @@ type ScheduleTaskProps = {
 };
 
 function DraggableScheduleTask({ task, onEdit, onDelete, onToggleComplete }: ScheduleTaskProps) {
-    const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
-        id: task.id,
-    });
+    const { attributes, listeners, setNodeRef, isDragging } = useDraggable({ id: task.id });
 
     return (
         <div ref={setNodeRef} {...listeners} {...attributes}>
@@ -48,12 +46,8 @@ export function TasksSchedule({ tasks, onEdit, onDelete, onToggleComplete, onAss
     const [activeTask, setActiveTask] = useState<Task | null>(null);
 
     const sensors = useSensors(
-        useSensor(MouseSensor, {
-            activationConstraint: { distance: 8 },
-        }),
-        useSensor(TouchSensor, {
-            activationConstraint: { delay: 180, tolerance: 8 },
-        }),
+        useSensor(MouseSensor, { activationConstraint: { distance: 8 } }),
+        useSensor(TouchSensor, { activationConstraint: { delay: 180, tolerance: 8 } })
     );
 
     function handleDragStart(event: DragStartEvent) {
@@ -86,25 +80,25 @@ export function TasksSchedule({ tasks, onEdit, onDelete, onToggleComplete, onAss
             onDragCancel={handleDragCancel}
         >
             <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
-                <aside className="flex w-full shrink-0 flex-col gap-3 lg:w-72">
+                <aside className="flex flex-col gap-3 w-full lg:w-72 shrink-0">
                     <div className="flex items-baseline justify-between gap-2">
-                        <h3 className="text-sm font-semibold text-grey-800">No time</h3>
+                        <h3 className="text-sm font-semibold text-grey-800">No time assigned</h3>
                         <span className="text-xs text-grey-500">{untimed.length}</span>
                     </div>
 
                     <ScheduleDropZone
                         id={UNTIMED_DROPPABLE_ID}
-                        className="min-h-24 rounded-2xl transition-colors"
+                        className="rounded-2xl transition-colors"
                         activeClassName="bg-secondary-100/70 ring-2 ring-secondary-500/40"
                     >
                         {untimed.length === 0 ? (
-                            <div className="rounded-2xl border border-dashed border-primary-200 bg-primary-100/40 px-4 py-6 text-center">
+                            <div className="px-4 py-6 rounded-2xl border border-dashed border-primary-200 bg-primary-100/40 text-center">
                                 <p className="text-sm text-grey-500">
                                     Drop tasks here to clear their time.
                                 </p>
                             </div>
                         ) : (
-                            <div className="space-y-2 rounded-2xl p-1">
+                            <div className="p-1 space-y-2 rounded-2xl">
                                 {untimed.map(task => (
                                     <DraggableScheduleTask
                                         key={task.id}
@@ -138,7 +132,7 @@ export function TasksSchedule({ tasks, onEdit, onDelete, onToggleComplete, onAss
 
                                     <ScheduleDropZone
                                         id={hourDroppableId(hour)}
-                                        className="flex min-h-16 flex-col gap-1.5 p-2 transition-colors"
+                                        className="flex flex-col gap-1.5 min-h-16 p-2 transition-colors"
                                     >
                                         {hourTasks.map(task => (
                                             <DraggableScheduleTask

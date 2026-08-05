@@ -41,12 +41,12 @@ export function TasksContent({ tasks: initialTasks }: TasksContentProps) {
     );
 
     const total = filteredTasks.length;
-    const completed = filteredTasks.filter((task) => task.status === "completed").length;
+    const completed = filteredTasks.filter(task => task.status === "completed").length;
     const todo = total - completed;
 
     async function handleCreate(values: TaskFormValues) {
         const created = await createTask(toTaskInput(values));
-        setTasks((current) => [created, ...current]);
+        setTasks(current => [created, ...current]);
         setIsCreateOpen(false);
     }
 
@@ -54,9 +54,7 @@ export function TasksContent({ tasks: initialTasks }: TasksContentProps) {
         if (!editingTask) return;
 
         const updated = await updateTask(editingTask.id, toTaskInput(values));
-        setTasks((current) =>
-            current.map((task) => (task.id === updated.id ? updated : task)),
-        );
+        setTasks(current => current.map(task => (task.id === updated.id ? updated : task)));
         setEditingTask(null);
     }
 
@@ -64,19 +62,17 @@ export function TasksContent({ tasks: initialTasks }: TasksContentProps) {
         if (!deletingTask) return;
 
         await deleteTask(deletingTask.id);
-        setTasks((current) => current.filter((task) => task.id !== deletingTask.id));
+        setTasks(current => current.filter(task => task.id !== deletingTask.id));
         setDeletingTask(null);
     }
 
     async function handleToggleComplete(task: Task) {
         const updated = await toggleTaskStatus(task.id);
-        setTasks((current) =>
-            current.map((item) => (item.id === updated.id ? updated : item)),
-        );
+        setTasks(current => current.map(item => (item.id === updated.id ? updated : item)));
     }
 
     async function handleAssignTime(taskId: string, time: string | null) {
-        const current = tasks.find((task) => task.id === taskId);
+        const current = tasks.find(task => task.id === taskId);
         if (!current || current.time === time) return;
 
         const updated = await updateTask(taskId, { time });
@@ -100,7 +96,7 @@ export function TasksContent({ tasks: initialTasks }: TasksContentProps) {
                 onPriorityChange={setPriority}
             />
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
                 <TasksSummary total={total} todo={todo} completed={completed} />
 
                 {view === "day" ? (

@@ -96,7 +96,7 @@ export function TaskItem({ task, compact = false, dragEnabled = false, isDraggin
                 </div>
 
                 <div
-                    className={`flex items-end md:items-center ${compact ? "flex-row-reverse gap-1.5" : "flex-col md:flex-row-reverse md:items-center md:gap-2"}`}
+                    className={`flex flex-col md:flex-row-reverse items-end md:items-center`}
                 >
                     <IconMenu
                         label={`Actions for ${task.title}`}
