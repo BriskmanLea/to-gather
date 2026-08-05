@@ -8,6 +8,7 @@ import { CreateTaskModal, type TaskFormValues } from "@/features/tasks/create";
 import { EditTaskModal } from "@/features/tasks/edit";
 import { DeleteTaskModal } from "@/features/tasks/delete";
 import { toDateKey } from "@/shared/lib";
+import { useCurrentUserStore } from "@/widgets/current-user";
 
 type TasksContentProps = {
     tasks: Task[];
@@ -25,6 +26,7 @@ function toTaskInput(values: TaskFormValues) {
 
 export function TasksContent({ tasks: initialTasks }: TasksContentProps) {
     const [tasks, setTasks] = useState(initialTasks);
+    const dayStartHour = useCurrentUserStore(state => state.tasksPreferences.dayStartHour);
     const [view, setView] = useState<TasksView>("day");
     const [dayDisplayMode, setDayDisplayMode] = useState<DayDisplayMode>("list");
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -41,12 +43,12 @@ export function TasksContent({ tasks: initialTasks }: TasksContentProps) {
     );
 
     const total = filteredTasks.length;
-    const completed = filteredTasks.filter((task) => task.status === "completed").length;
+    const completed = filteredTasks.filter(task => task.status === "completed").length;
     const todo = total - completed;
 
     async function handleCreate(values: TaskFormValues) {
         const created = await createTask(toTaskInput(values));
-        setTasks((current) => [created, ...current]);
+        setTasks(current => [created, ...current]);
         setIsCreateOpen(false);
     }
 
@@ -54,9 +56,7 @@ export function TasksContent({ tasks: initialTasks }: TasksContentProps) {
         if (!editingTask) return;
 
         const updated = await updateTask(editingTask.id, toTaskInput(values));
-        setTasks((current) =>
-            current.map((task) => (task.id === updated.id ? updated : task)),
-        );
+        setTasks(current => current.map(task => (task.id === updated.id ? updated : task)));
         setEditingTask(null);
     }
 
@@ -64,19 +64,17 @@ export function TasksContent({ tasks: initialTasks }: TasksContentProps) {
         if (!deletingTask) return;
 
         await deleteTask(deletingTask.id);
-        setTasks((current) => current.filter((task) => task.id !== deletingTask.id));
+        setTasks(current => current.filter(task => task.id !== deletingTask.id));
         setDeletingTask(null);
     }
 
     async function handleToggleComplete(task: Task) {
         const updated = await toggleTaskStatus(task.id);
-        setTasks((current) =>
-            current.map((item) => (item.id === updated.id ? updated : item)),
-        );
+        setTasks(current => current.map(item => (item.id === updated.id ? updated : item)));
     }
 
     async function handleAssignTime(taskId: string, time: string | null) {
-        const current = tasks.find((task) => task.id === taskId);
+        const current = tasks.find(task => task.id === taskId);
         if (!current || current.time === time) return;
 
         const updated = await updateTask(taskId, { time });
@@ -100,7 +98,7 @@ export function TasksContent({ tasks: initialTasks }: TasksContentProps) {
                 onPriorityChange={setPriority}
             />
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
                 <TasksSummary total={total} todo={todo} completed={completed} />
 
                 {view === "day" ? (
@@ -116,6 +114,7 @@ export function TasksContent({ tasks: initialTasks }: TasksContentProps) {
             ) : view === "day" && dayDisplayMode === "schedule" ? (
                 <TasksSchedule
                     tasks={filteredTasks}
+                    dayStartHour={dayStartHour}
                     onEdit={setEditingTask}
                     onDelete={setDeletingTask}
                     onToggleComplete={handleToggleComplete}

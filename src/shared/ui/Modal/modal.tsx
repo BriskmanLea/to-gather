@@ -56,7 +56,7 @@ export function Modal({ open, title, children, onClose, footer }: ModalProps) {
                     <button
                         type="button"
                         onClick={onClose}
-                        className="flex items-center justify-center h-9 w-9 rounded-lg text-grey-500 transition-colors hover:bg-primary-100 hover:text-grey-800"
+                        className="flex items-center justify-center h-9 w-9 rounded-lg text-grey-500 transition-colors cursor-pointer hover:bg-primary-100 hover:text-grey-800"
                         aria-label="Close modal"
                     >
                         ✕

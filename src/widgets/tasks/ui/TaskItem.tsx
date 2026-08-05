@@ -61,7 +61,7 @@ export function TaskItem({ task, compact = false, dragEnabled = false, isDraggin
                     aria-label={completed ? "Mark as to do" : "Mark as completed"}
                     aria-pressed={completed}
                     className={[
-                        "flex shrink-0 items-center justify-center rounded-full border text-xs transition-colors",
+                        "flex shrink-0 items-center justify-center rounded-full border text-xs transition-colors cursor-pointer",
                         compact ? "size-4" : "mt-1 size-5",
                         completed ? "border-secondary-500 bg-secondary-500 text-white" : "border-neutral-400 bg-white hover:border-secondary-500"
                     ].join(" ")}
@@ -96,7 +96,7 @@ export function TaskItem({ task, compact = false, dragEnabled = false, isDraggin
                 </div>
 
                 <div
-                    className={`flex items-end md:items-center ${compact ? "flex-row-reverse gap-1.5" : "flex-col md:flex-row-reverse md:items-center md:gap-2"}`}
+                    className={`flex flex-col gap-1 md:flex-row-reverse items-end md:items-center`}
                 >
                     <IconMenu
                         label={`Actions for ${task.title}`}

@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, type PropsWithChildren } from "react";
+import { useEffect, useState, type PropsWithChildren } from "react";
 import { AppHeader } from "./AppHeader";
 import { AppSidebar } from "./AppSidebar";
-import type { CurrentUser } from "@/widgets/current-user";
+import { useCurrentUserStore, type CurrentUser } from "@/widgets/current-user";
 
 type AppShellProps = PropsWithChildren<{
     user: CurrentUser;
@@ -11,6 +11,11 @@ type AppShellProps = PropsWithChildren<{
 
 export function AppShell({ children, user }: AppShellProps) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const storedUser = useCurrentUserStore(state => state.user);
+
+    useEffect(() => {
+        void useCurrentUserStore.persist?.rehydrate();
+    }, []);
 
     return (
         <div className="min-h-screen bg-neutral-100 lg:grid lg:grid-cols-[240px_minmax(0,1fr)]">
@@ -20,7 +25,10 @@ export function AppShell({ children, user }: AppShellProps) {
             />
 
             <div className="min-w-0">
-                <AppHeader onMenuOpen={() => setIsSidebarOpen(true)} user={user} />
+                <AppHeader
+                    onMenuOpen={() => setIsSidebarOpen(true)}
+                    user={useCurrentUserStore.persist?.hasHydrated() ? storedUser : user}
+                />
 
                 <main className="px-4 py-6 lg:px-8 lg:py-8">{children}</main>
             </div>

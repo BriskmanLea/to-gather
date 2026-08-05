@@ -16,7 +16,7 @@ export function TasksViewTabs({ value, onChange }: TasksViewTabsProps) {
                         key={tab.value}
                         type="button"
                         onClick={() => onChange(tab.value)}
-                        className={`w-full md:w-auto rounded-lg px-4 py-2 text-sm font-medium transition-all ${active ? "bg-secondary-500 text-white shadow-sm" : "bg-secondary-100 text-grey-800 hover:bg-secondary-200"}`}
+                        className={`w-full md:w-auto rounded-lg px-4 py-2 text-sm font-medium transition-all cursor-pointer ${active ? "bg-secondary-500 text-white shadow-sm" : "bg-secondary-100 text-grey-800 hover:bg-secondary-200"}`}
                     >
                         {tab.label}
                     </button>

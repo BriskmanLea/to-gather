@@ -54,7 +54,7 @@ export function IconMenu({ label, items }: IconMenuProps) {
                     event.stopPropagation();
                     setOpen(current => !current);
                 }}
-                className="flex items-center justify-center size-9 rounded-xl text-grey-500 transition-colors hover:bg-neutral-100 hover:text-grey-800"
+                className="flex items-center justify-center size-9 rounded-xl text-grey-500 transition-colors cursor-pointer hover:bg-neutral-100 hover:text-grey-800"
             >
                 <span aria-hidden="true" className="text-lg leading-none tracking-widest">
                     ⋯
@@ -78,7 +78,7 @@ export function IconMenu({ label, items }: IconMenuProps) {
                                 item.onSelect();
                             }}
                             className={[
-                                "block w-full px-4 py-2.5 text-left text-sm transition-colors hover:bg-neutral-100",
+                                "block w-full px-4 py-2.5 text-left text-sm transition-colors hover:bg-neutral-100 cursor-pointer",
                                 item.danger ? "text-error hover:bg-error/10" : "text-grey-800"
                             ].join(" ")}
                         >

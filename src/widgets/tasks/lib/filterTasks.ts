@@ -26,7 +26,7 @@ function matchesView(taskDate: string, view: TasksView, selectedDate: Date): boo
 export function filterTasks({ tasks, view, selectedDate, search, status, priority }: FilterParams): Task[] {
     const normalizedSearch = search.trim().toLowerCase();
 
-    return tasks.filter((task) => {
+    return tasks.filter(task => {
         if (!matchesView(task.date, view, selectedDate)) {
             return false;
         }

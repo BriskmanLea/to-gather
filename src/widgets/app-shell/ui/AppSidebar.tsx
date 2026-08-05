@@ -23,11 +23,7 @@ type NavigationLinkProps = {
     onClick?: () => void;
 };
 
-function NavigationLink({
-    item,
-    pathname,
-    onClick,
-}: NavigationLinkProps) {
+function NavigationLink({ item, pathname, onClick }: NavigationLinkProps) {
     const isActive = isNavigationItemActive(pathname, item.href);
 
     return (
@@ -53,7 +49,7 @@ type SidebarContentProps = {
 function SidebarContent({ pathname, onNavigate }: SidebarContentProps) {
     return (
         <>
-            <div className="flex items-center h-20 px-6 border-b border-neutral-400/60">
+            <div className="flex items-center h-16 px-6 border-b border-neutral-400/60">
                 <Link
                     href="/home"
                     onClick={onNavigate}
@@ -67,7 +63,7 @@ function SidebarContent({ pathname, onNavigate }: SidebarContentProps) {
                 aria-label="Main application navigation"
                 className="flex flex-col gap-1 flex-1 p-4"
             >
-                {mainNavigation.map((item) => (
+                {mainNavigation.map(item => (
                     <NavigationLink
                         key={item.href}
                         item={item}
@@ -79,9 +75,9 @@ function SidebarContent({ pathname, onNavigate }: SidebarContentProps) {
 
             <nav
                 aria-label="Secondary application navigation"
-                className="border-t border-neutral-400/60 p-4"
+                className="sticky bottom-0 p-4 border-t border-neutral-400/60"
             >
-                {secondaryNavigation.map((item) => (
+                {secondaryNavigation.map(item => (
                     <NavigationLink
                         key={item.href}
                         item={item}
@@ -109,7 +105,7 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
                         type="button"
                         aria-label="Close navigation"
                         onClick={onClose}
-                        className="absolute inset-0 bg-grey-800/30"
+                        className="absolute inset-0 bg-grey-800/30 cursor-pointer"
                     />
 
                     <aside className="relative flex flex-col h-full w-72 border-r border-neutral-400/60 bg-primary-100 shadow-xl">
@@ -117,7 +113,7 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
                             type="button"
                             onClick={onClose}
                             aria-label="Close navigation"
-                            className="absolute right-4 top-5 flex items-center justify-center size-10 rounded-full text-xl text-grey-500 transition-colors hover:bg-white/70 hover:text-grey-800"
+                            className="absolute right-4 top-5 flex items-center justify-center size-10 rounded-full text-xl text-grey-500 transition-colors cursor-pointer hover:bg-white/70 hover:text-grey-800"
                         >
                             ×
                         </button>
