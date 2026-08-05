@@ -206,8 +206,7 @@ export function SettingsContent() {
                             aria-selected={isActive}
                             aria-controls={`${tab.value}-settings-panel`}
                             onClick={() => setActiveTab(tab.value)}
-                            className={`w-full rounded-lg px-5 py-2.5 text-sm font-medium transition-all sm:w-auto ${isActive ? "bg-secondary-500 text-white shadow-sm" : "text-grey-800 hover:bg-secondary-100"
-                                }`}
+                            className={`w-full px-5 py-2.5 text-sm font-medium transition-all rounded-lg cursor-pointer sm:w-auto ${isActive ? "bg-secondary-500 text-white shadow-sm" : "text-grey-800 hover:bg-secondary-100"}`}
                         >
                             {tab.label}
                         </button>

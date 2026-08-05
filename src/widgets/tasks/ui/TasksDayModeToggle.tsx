@@ -25,7 +25,7 @@ export function TasksDayModeToggle({ value, onChange }: Props) {
                         type="button"
                         onClick={() => onChange(mode.value)}
                         aria-pressed={active}
-                        className={`inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all ${active ? "bg-secondary-500 text-white shadow-sm" : "text-grey-800 hover:bg-secondary-100"}`}
+                        className={`inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all cursor-pointer ${active ? "bg-secondary-500 text-white shadow-sm" : "text-grey-800 hover:bg-secondary-100"}`}
                     >
                         <Icon className="size-4 shrink-0" aria-hidden />
                         {mode.label}

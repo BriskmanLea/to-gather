@@ -61,7 +61,7 @@ export function TaskItem({ task, compact = false, dragEnabled = false, isDraggin
                     aria-label={completed ? "Mark as to do" : "Mark as completed"}
                     aria-pressed={completed}
                     className={[
-                        "flex shrink-0 items-center justify-center rounded-full border text-xs transition-colors",
+                        "flex shrink-0 items-center justify-center rounded-full border text-xs transition-colors cursor-pointer",
                         compact ? "size-4" : "mt-1 size-5",
                         completed ? "border-secondary-500 bg-secondary-500 text-white" : "border-neutral-400 bg-white hover:border-secondary-500"
                     ].join(" ")}

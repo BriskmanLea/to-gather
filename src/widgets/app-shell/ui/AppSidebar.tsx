@@ -105,7 +105,7 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
                         type="button"
                         aria-label="Close navigation"
                         onClick={onClose}
-                        className="absolute inset-0 bg-grey-800/30"
+                        className="absolute inset-0 bg-grey-800/30 cursor-pointer"
                     />
 
                     <aside className="relative flex flex-col h-full w-72 border-r border-neutral-400/60 bg-primary-100 shadow-xl">
@@ -113,7 +113,7 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
                             type="button"
                             onClick={onClose}
                             aria-label="Close navigation"
-                            className="absolute right-4 top-5 flex items-center justify-center size-10 rounded-full text-xl text-grey-500 transition-colors hover:bg-white/70 hover:text-grey-800"
+                            className="absolute right-4 top-5 flex items-center justify-center size-10 rounded-full text-xl text-grey-500 transition-colors cursor-pointer hover:bg-white/70 hover:text-grey-800"
                         >
                             ×
                         </button>
