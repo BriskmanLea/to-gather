@@ -5,11 +5,12 @@ import { DndContext, DragOverlay, MouseSensor, TouchSensor, closestCenter, useDr
 import type { Task } from "@/entities/task";
 import { TaskItem } from "./TaskItem";
 import { ScheduleDropZone } from "./ScheduleDropZone";
-import { SCHEDULE_HOURS, formatScheduleHour, splitDayTasks } from "../lib/splitDayTasks";
+import { formatScheduleHour, getScheduleHours, splitDayTasks } from "../lib/splitDayTasks";
 import { UNTIMED_DROPPABLE_ID, hourDroppableId, resolveDropTime } from "../lib/taskDrag";
 
 type Props = {
     tasks: Task[];
+    dayStartHour: number;
     onEdit: (task: Task) => void;
     onDelete: (task: Task) => void;
     onToggleComplete: (task: Task) => void;
@@ -41,8 +42,9 @@ function DraggableScheduleTask({ task, onEdit, onDelete, onToggleComplete }: Sch
     );
 }
 
-export function TasksSchedule({ tasks, onEdit, onDelete, onToggleComplete, onAssignTime }: Props) {
-    const { untimed, byHour } = splitDayTasks(tasks);
+export function TasksSchedule({ tasks, dayStartHour, onEdit, onDelete, onToggleComplete, onAssignTime }: Props) {
+    const { untimed, beforeDayStart, byHour } = splitDayTasks(tasks, dayStartHour);
+    const scheduleHours = getScheduleHours(dayStartHour);
     const [activeTask, setActiveTask] = useState<Task | null>(null);
 
     const sensors = useSensors(
@@ -111,11 +113,34 @@ export function TasksSchedule({ tasks, onEdit, onDelete, onToggleComplete, onAss
                             </div>
                         )}
                     </ScheduleDropZone>
+
+                    {beforeDayStart.length > 0 ? (
+                        <>
+                            <div className="flex items-baseline justify-between gap-2">
+                                <h3 className="text-sm font-semibold text-grey-800">
+                                    Before {formatScheduleHour(dayStartHour)}
+                                </h3>
+                                <span className="text-xs text-grey-500">{beforeDayStart.length}</span>
+                            </div>
+
+                            <div className="p-1 space-y-2 rounded-2xl">
+                                {beforeDayStart.map(task => (
+                                    <DraggableScheduleTask
+                                        key={task.id}
+                                        task={task}
+                                        onEdit={onEdit}
+                                        onDelete={onDelete}
+                                        onToggleComplete={onToggleComplete}
+                                    />
+                                ))}
+                            </div>
+                        </>
+                    ) : null}
                 </aside>
 
                 <div className="min-w-0 flex-1 overflow-hidden rounded-2xl border border-primary-200 bg-white shadow-sm">
-                    <div className="max-h-[70vh] overflow-y-auto overscroll-contain">
-                        {SCHEDULE_HOURS.map(hour => {
+                    <div className="max-h-[50vh] overflow-y-auto overscroll-contain">
+                        {scheduleHours.map(hour => {
                             const hourTasks = byHour[hour];
                             const time = formatScheduleHour(hour);
 

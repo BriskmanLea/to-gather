@@ -8,6 +8,7 @@ import { CreateTaskModal, type TaskFormValues } from "@/features/tasks/create";
 import { EditTaskModal } from "@/features/tasks/edit";
 import { DeleteTaskModal } from "@/features/tasks/delete";
 import { toDateKey } from "@/shared/lib";
+import { useCurrentUserStore } from "@/widgets/current-user";
 
 type TasksContentProps = {
     tasks: Task[];
@@ -25,6 +26,7 @@ function toTaskInput(values: TaskFormValues) {
 
 export function TasksContent({ tasks: initialTasks }: TasksContentProps) {
     const [tasks, setTasks] = useState(initialTasks);
+    const dayStartHour = useCurrentUserStore(state => state.tasksPreferences.dayStartHour);
     const [view, setView] = useState<TasksView>("day");
     const [dayDisplayMode, setDayDisplayMode] = useState<DayDisplayMode>("list");
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -112,6 +114,7 @@ export function TasksContent({ tasks: initialTasks }: TasksContentProps) {
             ) : view === "day" && dayDisplayMode === "schedule" ? (
                 <TasksSchedule
                     tasks={filteredTasks}
+                    dayStartHour={dayStartHour}
                     onEdit={setEditingTask}
                     onDelete={setDeletingTask}
                     onToggleComplete={handleToggleComplete}
