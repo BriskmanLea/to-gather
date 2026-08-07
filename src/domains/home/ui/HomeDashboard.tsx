@@ -75,12 +75,12 @@ export function HomeDashboard({
                 </section>
             ) : null}
 
-            {showSecondarySection ? (
+            {/* {showSecondarySection ? (
                 <section className="grid gap-6 xl:grid-cols-[1.4fr_1fr] mt-6">
-                    {/* {isGoalsEnabled ? <GoalsCard goals={goals} /> : null} */}
+                    {isGoalsEnabled ? <GoalsCard goals={goals} /> : null}
                     {hasQuickActions ? <QuickActionsCard /> : null}
                 </section>
-            ) : null}
+            ) : null} */}
         </>
     );
 }
