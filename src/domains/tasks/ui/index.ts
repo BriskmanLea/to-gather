@@ -8,6 +8,7 @@ export { TasksContent } from "./TasksContent";
 export { TasksDatePicker } from "./TasksDatePicker";
 export { TasksDayModeToggle } from "./TasksDayModeToggle";
 export { TasksEmptyState } from "./TasksEmptyState";
+export { TasksFeatureGate } from "./TasksFeatureGate";
 export { TasksFilters } from "./TasksFilters";
 export { TasksHeader } from "./TasksHeader";
 export { TasksList } from "./TasksList";

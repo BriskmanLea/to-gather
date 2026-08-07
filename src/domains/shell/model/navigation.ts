@@ -9,29 +9,25 @@ export const mainNavigation: NavigationItem[] = [
         href: "/home",
     },
     {
-        label: "Today",
-        href: "/today",
-    },
-    {
         label: "Tasks",
         href: "/tasks",
     },
-    {
-        label: "Habits",
-        href: "/habits",
-    },
-    {
-        label: "Goals",
-        href: "/goals",
-    },
-    {
-        label: "Notes",
-        href: "/notes",
-    },
-    {
-        label: "Finance",
-        href: "/finance",
-    },
+    // {
+    //     label: "Habits",
+    //     href: "/habits",
+    // },
+    // {
+    //     label: "Goals",
+    //     href: "/goals",
+    // },
+    // {
+    //     label: "Notes",
+    //     href: "/notes",
+    // },
+    // {
+    //     label: "Finance",
+    //     href: "/finance",
+    // },
 ];
 
 export const secondaryNavigation: NavigationItem[] = [

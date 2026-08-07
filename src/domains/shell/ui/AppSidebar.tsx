@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { getFeatureByHref, useCurrentUserStore } from "@/domains/user";
 import { mainNavigation, secondaryNavigation, type NavigationItem } from "../model/navigation";
 
 type AppSidebarProps = {
@@ -15,6 +16,29 @@ function isNavigationItemActive(pathname: string, href: string) {
     }
 
     return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+function useVisibleMainNavigation() {
+    const features = useCurrentUserStore(state => state.features);
+    const hasHydrated = useCurrentUserStore(state => state.hasHydrated);
+
+    return mainNavigation.filter(item => {
+        if (item.href === "/home") {
+            return true;
+        }
+
+        if (!hasHydrated) {
+            return false;
+        }
+
+        const feature = getFeatureByHref(item.href);
+
+        if (!feature) {
+            return true;
+        }
+
+        return features[feature.id] !== false;
+    });
 }
 
 type NavigationLinkProps = {
@@ -43,10 +67,11 @@ function NavigationLink({ item, pathname, onClick }: NavigationLinkProps) {
 
 type SidebarContentProps = {
     pathname: string;
+    items: NavigationItem[];
     onNavigate?: () => void;
 };
 
-function SidebarContent({ pathname, onNavigate }: SidebarContentProps) {
+function SidebarContent({ pathname, items, onNavigate }: SidebarContentProps) {
     return (
         <>
             <div className="flex items-center h-16 px-6 border-b border-neutral-400/60">
@@ -63,7 +88,7 @@ function SidebarContent({ pathname, onNavigate }: SidebarContentProps) {
                 aria-label="Main application navigation"
                 className="flex flex-col gap-1 flex-1 p-4"
             >
-                {mainNavigation.map(item => (
+                {items.map(item => (
                     <NavigationLink
                         key={item.href}
                         item={item}
@@ -92,11 +117,15 @@ function SidebarContent({ pathname, onNavigate }: SidebarContentProps) {
 
 export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
     const pathname = usePathname();
+    const visibleMainNavigation = useVisibleMainNavigation();
 
     return (
         <>
             <aside className="hidden lg:flex lg:flex-col min-h-screen border-r border-neutral-400/60 bg-primary-100">
-                <SidebarContent pathname={pathname} />
+                <SidebarContent
+                    pathname={pathname}
+                    items={visibleMainNavigation}
+                />
             </aside>
 
             {isOpen ? (
@@ -120,6 +149,7 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
 
                         <SidebarContent
                             pathname={pathname}
+                            items={visibleMainNavigation}
                             onNavigate={onClose}
                         />
                     </aside>
