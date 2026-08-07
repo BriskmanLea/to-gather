@@ -14,7 +14,18 @@ export function AppShell({ children, user }: AppShellProps) {
     const storedUser = useCurrentUserStore(state => state.user);
 
     useEffect(() => {
-        void useCurrentUserStore.persist?.rehydrate();
+        const markHydrated = () => {
+            useCurrentUserStore.getState().setHasHydrated(true);
+        };
+
+        const rehydrate = useCurrentUserStore.persist?.rehydrate;
+
+        if (!rehydrate) {
+            markHydrated();
+            return;
+        }
+
+        void Promise.resolve(rehydrate()).then(markHydrated, markHydrated);
     }, []);
 
     return (

@@ -1,8 +1,8 @@
 import { getTasks } from "../api";
-import { TasksContent } from "./TasksContent";
+import { TasksFeatureGate } from "./TasksFeatureGate";
 
 export async function TasksPage() {
     const tasks = await getTasks();
 
-    return <TasksContent tasks={tasks} />;
+    return <TasksFeatureGate tasks={tasks} />;
 }
