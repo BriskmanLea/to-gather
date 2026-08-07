@@ -1,5 +1,1 @@
-import { SettingsPage } from "@/views/settings";
-
-export default function Page() {
-    return <SettingsPage />;
-}
+export { SettingsPage as default } from "@/domains/user";

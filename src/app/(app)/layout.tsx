@@ -1,8 +1,11 @@
 import type { PropsWithChildren } from "react";
-import { AppShell } from "@/widgets/app-shell";
-import { getCurrentUser } from "@/widgets/current-user";
+import { requireAuth } from "@/domains/auth";
+import { AppShell } from "@/domains/shell";
+import { getCurrentUser } from "@/domains/user";
 
 export default async function AppLayout({ children }: PropsWithChildren) {
+    await requireAuth();
+
     const user = await getCurrentUser();
 
     return (
