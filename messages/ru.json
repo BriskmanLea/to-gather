@@ -1,0 +1,273 @@
+{
+  "Metadata": {
+    "title": "ToGather",
+    "description": "Управляйте повседневной жизнью в одном месте"
+  },
+  "Common": {
+    "brand": "ToGather",
+    "cancel": "Отмена",
+    "saveChanges": "Сохранить",
+    "saving": "Сохранение...",
+    "signIn": "Войти",
+    "delete": "Удалить",
+    "edit": "Изменить",
+    "viewAll": "Смотреть все",
+    "completed": "Выполнено",
+    "language": "Язык",
+    "english": "English",
+    "russian": "Русский"
+  },
+  "Nav": {
+    "home": "Главная",
+    "tasks": "Задачи",
+    "settings": "Настройки",
+    "mainAriaLabel": "Основная навигация",
+    "secondaryAriaLabel": "Дополнительная навигация",
+    "openNavigation": "Открыть меню",
+    "closeNavigation": "Закрыть меню",
+    "profile": "Профиль"
+  },
+  "Landing": {
+    "header": {
+      "mainNavAriaLabel": "Основная навигация",
+      "navFeatures": "Возможности",
+      "navAbout": "О продукте",
+      "signIn": "Войти",
+      "getStarted": "Начать"
+    },
+    "hero": {
+      "eyebrow": "Личная операционная система жизни",
+      "title": "Планируйте, отслеживайте и улучшайте жизнь в одном месте",
+      "subtitle": "Организуйте задачи, цели, заметки, привычки и личный прогресс в одном настраиваемом пространстве.",
+      "cta": "Начать планирование"
+    },
+    "dashboardPreview": {
+      "greeting": "Добрый вечер, User!",
+      "balanceBadge": "Баланс 72%",
+      "moduleTasksName": "Задачи",
+      "moduleTasksDescription": "4 задачи на сегодня",
+      "moduleHabitsName": "Привычки",
+      "moduleHabitsDescription": "3 из 5 выполнено",
+      "moduleGoalsName": "Цели",
+      "moduleGoalsDescription": "Прогресс за месяц"
+    },
+    "features": {
+      "eyebrow": "Возможности",
+      "title": "Всё необходимое для организации личной жизни",
+      "subtitle": "Включайте только нужные модули и создавайте пространство под свой образ жизни.",
+      "dailyPlanner": {
+        "label": "Продуктивность",
+        "title": "Ежедневный планнер",
+        "description": "Организуйте ежедневные задачи, приоритеты и важные дела в одном месте."
+      },
+      "notes": {
+        "label": "Знания",
+        "title": "Заметки",
+        "description": "Сохраняйте идеи, упорядочивайте их тегами и быстро находите нужное."
+      },
+      "goals": {
+        "label": "Рост",
+        "title": "Цели",
+        "description": "Ставьте месячные и годовые цели и отслеживайте прогресс."
+      },
+      "habitTracker": {
+        "label": "Постоянство",
+        "title": "Трекер привычек",
+        "description": "Формируйте полезные рутины и видьте, насколько стабильно вы их соблюдаете."
+      },
+      "lifeBalance": {
+        "label": "Рефлексия",
+        "title": "Баланс жизни",
+        "description": "Оценивайте важные сферы жизни и замечайте, что требует внимания."
+      },
+      "financeTracker": {
+        "label": "Финансы",
+        "title": "Финансовый трекер",
+        "description": "Следите за расходами, доходами и прогрессом к финансовым целям."
+      }
+    },
+    "about": {
+      "eyebrow": "Почему ToGather",
+      "title": "Ваша личная система должна подстраиваться под вас",
+      "subtitle": "Продуктивность — это не только выполнение задач. ToGather помогает связать ежедневное планирование с долгосрочными целями, привычками и развитием.",
+      "everythingInOnePlace": {
+        "title": "Всё в одном месте",
+        "description": "Держите задачи, привычки, цели, заметки и размышления в одном связанном пространстве."
+      },
+      "onlyToolsYouNeed": {
+        "title": "Только нужные инструменты",
+        "description": "Включайте и отключайте модули и собирайте систему под свой образ жизни."
+      },
+      "seeYourProgress": {
+        "title": "Видьте свой прогресс",
+        "description": "Отслеживайте постоянство, оценивайте важные сферы жизни и понимайте, чему уделить внимание."
+      }
+    },
+    "cta": {
+      "eyebrow": "Соберите свою систему",
+      "title": "Хватит переключаться между приложениями",
+      "subtitle": "Выберите модули и храните планы, прогресс и размышления в одном пространстве.",
+      "button": "Создать пространство"
+    },
+    "footer": {
+      "copyright": "© {year} ToGather. Личное пространство для продуктивности.",
+      "features": "Возможности",
+      "github": "GitHub"
+    }
+  },
+  "Auth": {
+    "signIn": {
+      "eyebrow": "С возвращением",
+      "title": "Вход в ToGather",
+      "subtitle": "Продолжайте развивать своё личное пространство.",
+      "noAccount": "Нет аккаунта?",
+      "createOne": "Создать",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "Пароль",
+      "passwordPlaceholder": "Введите пароль",
+      "submit": "Войти",
+      "submitting": "Вход...",
+      "emailRequired": "Укажите email",
+      "emailInvalid": "Введите корректный email",
+      "passwordRequired": "Укажите пароль"
+    },
+    "signUp": {
+      "eyebrow": "Начните",
+      "title": "Создайте аккаунт",
+      "subtitle": "Соберите личное пространство, которое подстроится под вас.",
+      "hasAccount": "Уже есть аккаунт?",
+      "signInLink": "Войти",
+      "nameLabel": "Имя",
+      "namePlaceholder": "Ваше имя",
+      "lastNameLabel": "Фамилия",
+      "lastNamePlaceholder": "Ваша фамилия",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "Пароль",
+      "passwordPlaceholder": "Не менее 8 символов",
+      "confirmPasswordLabel": "Подтвердите пароль",
+      "confirmPasswordPlaceholder": "Повторите пароль",
+      "submit": "Создать аккаунт",
+      "submitting": "Создание...",
+      "nameMin": "Имя должно содержать не менее 2 символов",
+      "nameMax": "Имя должно содержать не более 50 символов",
+      "lastNameMin": "Фамилия должна содержать не менее 2 символов",
+      "lastNameMax": "Фамилия должна содержать не более 50 символов",
+      "emailRequired": "Укажите email",
+      "emailInvalid": "Введите корректный email",
+      "passwordMin": "Пароль должен содержать не менее 8 символов",
+      "passwordUppercase": "Пароль должен содержать заглавную букву",
+      "passwordLowercase": "Пароль должен содержать строчную букву",
+      "passwordNumber": "Пароль должен содержать цифру",
+      "confirmPasswordRequired": "Подтвердите пароль",
+      "passwordsMismatch": "Пароли не совпадают"
+    }
+  },
+  "Home": {
+    "greetingMorning": "Доброе утро",
+    "greetingAfternoon": "Добрый день",
+    "greetingEvening": "Добрый вечер",
+    "greetingWithName": "{greeting}, {firstName}",
+    "subtitle": "Краткий обзор планов, привычек и прогресса.",
+    "overviewAriaLabel": "Обзор дня",
+    "tasksLabel": "Задачи",
+    "tasksDescription": "5 выполнено сегодня",
+    "focusLabel": "Фокус",
+    "focusDescription": "Продуктивность за неделю",
+    "tasksCardTitle": "Задачи на сегодня",
+    "tasksCardEmpty": "На сегодня задач нет.",
+    "quickActionsTitle": "Быстрые действия",
+    "addTask": "Добавить задачу"
+  },
+  "Tasks": {
+    "title": "Задачи",
+    "subtitle": "Организуйте задачи, отслеживайте прогресс и оставайтесь продуктивными.",
+    "newTask": "+ Новая задача",
+    "viewDay": "День",
+    "viewWeek": "Неделя",
+    "viewMonth": "Месяц",
+    "dayModeAriaLabel": "Режим отображения дня",
+    "modeList": "Список",
+    "modeSchedule": "Расписание",
+    "searchPlaceholder": "Поиск задач...",
+    "allStatuses": "Все статусы",
+    "allPriorities": "Все приоритеты",
+    "statusTodo": "К выполнению",
+    "statusCompleted": "Выполнено",
+    "priorityHigh": "Высокий",
+    "priorityMedium": "Средний",
+    "priorityLow": "Низкий",
+    "priorityNone": "Без приоритета",
+    "summaryTasks": "{total} задач",
+    "summaryTodo": "{todo} к выполнению",
+    "summaryCompleted": "{completed} выполнено",
+    "emptyTitle": "Задачи не найдены",
+    "emptyDescription": "Измените фильтры или создайте новую задачу.",
+    "noTimeAssigned": "Без времени",
+    "dropToClearTime": "Перетащите задачи сюда, чтобы убрать время.",
+    "beforeHour": "До {hour}",
+    "markAsCompleted": "Отметить выполненной",
+    "markAsTodo": "Вернуть к выполнению",
+    "markAsCompletedWithTitle": "Отметить выполненной: {title}",
+    "markAsTodoWithTitle": "Вернуть к выполнению: {title}",
+    "actionsFor": "Действия для {title}",
+    "titleLabel": "Название",
+    "titlePlaceholder": "Что нужно сделать?",
+    "descriptionLabel": "Описание",
+    "descriptionPlaceholder": "Необязательные детали",
+    "priorityLabel": "Приоритет",
+    "dateLabel": "Дата",
+    "timeLabel": "Время",
+    "createSubmit": "Создать задачу",
+    "editSubmit": "Сохранить",
+    "titleRequired": "Укажите название",
+    "titleMax": "Название — не более 60 символов",
+    "descriptionMax": "Описание — не более 500 символов",
+    "dateInvalid": "Выберите корректную дату",
+    "timeInvalid": "Выберите корректное время",
+    "createModalTitle": "Новая задача",
+    "editModalTitle": "Редактировать задачу",
+    "deleteModalTitle": "Удалить задачу",
+    "deleteConfirm": "Удалить «{title}»? Это действие нельзя отменить."
+  },
+  "Settings": {
+    "title": "Настройки",
+    "subtitle": "Управляйте профилем и модулями.",
+    "tabsAriaLabel": "Разделы настроек",
+    "tabProfile": "Профиль",
+    "tabFeatures": "Модули",
+    "tabTasks": "Задачи",
+    "profileTitle": "Личные данные",
+    "profileSubtitle": "Обновите информацию в аккаунте.",
+    "firstNameLabel": "Имя",
+    "lastNameLabel": "Фамилия",
+    "emailLabel": "Email",
+    "saved": "Изменения сохранены",
+    "languageTitle": "Язык",
+    "languageSubtitle": "Выберите язык интерфейса.",
+    "nameMin": "Имя должно содержать не менее 2 символов",
+    "nameMax": "Имя должно содержать не более 50 символов",
+    "lastNameMin": "Фамилия должна содержать не менее 2 символов",
+    "lastNameMax": "Фамилия должна содержать не более 50 символов",
+    "emailRequired": "Укажите email",
+    "emailInvalid": "Введите корректный email",
+    "featuresTitle": "Модули",
+    "featuresSubtitle": "Включайте только нужные модули. Изменения сохраняются автоматически.",
+    "toggleAria": "{action} {label}",
+    "enable": "Включить",
+    "disable": "Выключить",
+    "tasksTitle": "Задачи",
+    "tasksSubtitle": "Настройте отображение расписания задач.",
+    "dayStartsAt": "День начинается в",
+    "dayStartsHint": "Расписание идёт с этого часа до полуночи. Изменения сохраняются автоматически."
+  },
+  "Features": {
+    "tasksLabel": "Задачи",
+    "tasksDescription": "Списки дел и расписания для работы и жизни.",
+    "disabledTitle": "Модуль «{label}» выключен",
+    "fallbackLabel": "Этот модуль",
+    "disabledDescription": "Включите его в настройках, чтобы открыть.",
+    "openSettings": "Открыть настройки"
+  }
+}

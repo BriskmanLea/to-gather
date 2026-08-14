@@ -1,15 +1,16 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { useCurrentUserStore, type AppFeatureId } from "@/domains/user";
 
 const quickActions: {
-    label: string;
+    labelKey: "addTask";
     href: string;
     featureId: AppFeatureId;
 }[] = [
         {
-            label: "Add task",
+            labelKey: "addTask",
             href: "/tasks/new",
             featureId: "tasks",
         },
@@ -31,6 +32,7 @@ const quickActions: {
     ];
 
 export function QuickActionsCard() {
+    const t = useTranslations("Home");
     const features = useCurrentUserStore(state => state.features);
     const visibleActions = quickActions.filter(action => features[action.featureId]);
 
@@ -41,7 +43,7 @@ export function QuickActionsCard() {
     return (
         <article className="p-6 rounded-3xl border border-secondary-200 bg-secondary-100 shadow-sm shadow-neutral-700/5">
             <h2 className="text-xl font-semibold text-grey-800">
-                Quick actions
+                {t("quickActionsTitle")}
             </h2>
 
             <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
@@ -58,7 +60,7 @@ export function QuickActionsCard() {
                             +
                         </span>
 
-                        {action.label}
+                        {t(action.labelKey)}
                     </Link>
                 ))}
             </div>

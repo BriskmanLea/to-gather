@@ -1,9 +1,9 @@
-import Link, { type LinkProps } from "next/link";
-import type { PropsWithChildren } from "react";
+import { Link } from "@/i18n/navigation";
+import type { ComponentProps, PropsWithChildren } from "react";
 import { getButtonClassName, type ButtonVariant } from "./button-styles";
 
 type ButtonLinkProps = PropsWithChildren<
-    LinkProps & {
+    ComponentProps<typeof Link> & {
         className?: string;
         variant?: ButtonVariant;
     }

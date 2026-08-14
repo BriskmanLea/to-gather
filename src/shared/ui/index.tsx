@@ -9,6 +9,7 @@ import { TimePicker } from "./TimePicker/timePicker";
 import { Textarea } from "./Textarea/textarea";
 import { Modal } from "./Modal/modal";
 import { IconMenu } from "./IconMenu/icon-menu";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export {
     Button,
@@ -22,4 +23,5 @@ export {
     Textarea,
     Modal,
     IconMenu,
+    LanguageSwitcher,
 };

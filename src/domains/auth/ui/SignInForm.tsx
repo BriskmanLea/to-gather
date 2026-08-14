@@ -1,17 +1,22 @@
 "use client";
 
+import { useMemo } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
-import { signInSchema, type SignInFormValues } from "../model/sign-in-schema";
+import { createSignInSchema, type SignInFormValues } from "../model/sign-in-schema";
 import { Button, FormField, Input } from "@/shared/ui";
 
 export function SignInForm() {
+    const t = useTranslations("Auth.signIn");
+    const schema = useMemo(() => createSignInSchema(t), [t]);
+
     const {
         register,
         handleSubmit,
         formState: { errors, isSubmitting },
     } = useForm<SignInFormValues>({
-        resolver: zodResolver(signInSchema),
+        resolver: zodResolver(schema),
         defaultValues: {
             email: "",
             password: "",
@@ -31,14 +36,14 @@ export function SignInForm() {
         >
             <FormField
                 htmlFor="email"
-                label="Email"
+                label={t("emailLabel")}
                 error={errors.email?.message}
             >
                 <Input
                     id="email"
                     type="email"
                     autoComplete="email"
-                    placeholder="you@example.com"
+                    placeholder={t("emailPlaceholder")}
                     aria-invalid={Boolean(errors.email)}
                     aria-describedby={errors.email ? "email-error" : undefined}
                     {...register("email")}
@@ -47,14 +52,14 @@ export function SignInForm() {
 
             <FormField
                 htmlFor="password"
-                label="Password"
+                label={t("passwordLabel")}
                 error={errors.password?.message}
             >
                 <Input
                     id="password"
                     type="password"
                     autoComplete="current-password"
-                    placeholder="Enter your password"
+                    placeholder={t("passwordPlaceholder")}
                     aria-invalid={Boolean(errors.password)}
                     aria-describedby={errors.password ? "password-error" : undefined}
                     {...register("password")}
@@ -66,7 +71,7 @@ export function SignInForm() {
                 disabled={isSubmitting}
                 className="w-full mt-2"
             >
-                {isSubmitting ? "Signing in..." : "Sign in"}
+                {isSubmitting ? t("submitting") : t("submit")}
             </Button>
         </form>
     );

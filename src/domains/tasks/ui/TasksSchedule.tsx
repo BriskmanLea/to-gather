@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { DndContext, DragOverlay, MouseSensor, TouchSensor, closestCenter, useDraggable, useSensor, useSensors, type DragEndEvent, type DragStartEvent } from "@dnd-kit/core";
 import type { Task } from "../model";
 import { TaskItem } from "./TaskItem";
@@ -43,6 +44,7 @@ function DraggableScheduleTask({ task, onEdit, onDelete, onToggleComplete }: Sch
 }
 
 export function TasksSchedule({ tasks, dayStartHour, onEdit, onDelete, onToggleComplete, onAssignTime }: Props) {
+    const t = useTranslations("Tasks");
     const { untimed, beforeDayStart, byHour } = splitDayTasks(tasks, dayStartHour);
     const scheduleHours = getScheduleHours(dayStartHour);
     const [activeTask, setActiveTask] = useState<Task | null>(null);
@@ -84,7 +86,7 @@ export function TasksSchedule({ tasks, dayStartHour, onEdit, onDelete, onToggleC
             <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
                 <aside className="flex flex-col gap-3 w-full lg:w-72 shrink-0">
                     <div className="flex items-baseline justify-between gap-2">
-                        <h3 className="text-sm font-semibold text-grey-800">No time assigned</h3>
+                        <h3 className="text-sm font-semibold text-grey-800">{t("noTimeAssigned")}</h3>
                         <span className="text-xs text-grey-500">{untimed.length}</span>
                     </div>
 
@@ -96,7 +98,7 @@ export function TasksSchedule({ tasks, dayStartHour, onEdit, onDelete, onToggleC
                         {untimed.length === 0 ? (
                             <div className="px-4 py-6 rounded-2xl border border-dashed border-primary-200 bg-primary-100/40 text-center">
                                 <p className="text-sm text-grey-500">
-                                    Drop tasks here to clear their time.
+                                    {t("dropToClearTime")}
                                 </p>
                             </div>
                         ) : (
@@ -118,7 +120,7 @@ export function TasksSchedule({ tasks, dayStartHour, onEdit, onDelete, onToggleC
                         <>
                             <div className="flex items-baseline justify-between gap-2">
                                 <h3 className="text-sm font-semibold text-grey-800">
-                                    Before {formatScheduleHour(dayStartHour)}
+                                    {t("beforeHour", { hour: formatScheduleHour(dayStartHour) })}
                                 </h3>
                                 <span className="text-xs text-grey-500">{beforeDayStart.length}</span>
                             </div>

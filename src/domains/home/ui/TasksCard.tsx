@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import type { Task } from "@/domains/tasks";
 import { TaskItem, TaskModals, useTasks } from "@/domains/tasks";
 
@@ -9,6 +10,8 @@ type TasksCardProps = {
 };
 
 export function TasksCard({ tasks: initialTasks }: TasksCardProps) {
+    const t = useTranslations("Home");
+    const tCommon = useTranslations("Common");
     const {
         tasks,
         editingTask,
@@ -25,13 +28,13 @@ export function TasksCard({ tasks: initialTasks }: TasksCardProps) {
     return (
         <article className="p-6 rounded-3xl border border-neutral-400/50 bg-white shadow-sm shadow-neutral-700/5">
             <div className="flex items-center justify-between gap-4">
-                <h2 className="text-xl font-semibold text-grey-800">Today's tasks</h2>
+                <h2 className="text-xl font-semibold text-grey-800">{t("tasksCardTitle")}</h2>
 
                 <Link
                     href="/tasks"
                     className="text-sm font-medium text-secondary-700 transition-colors hover:text-secondary-800"
                 >
-                    View all
+                    {tCommon("viewAll")}
                 </Link>
             </div>
 
@@ -51,7 +54,7 @@ export function TasksCard({ tasks: initialTasks }: TasksCardProps) {
             ) : (
                 <div className="mt-5 p-6 rounded-2xl border border-dashed border-neutral-400 text-center">
                     <p className="text-sm text-grey-500">
-                        You have no tasks planned for today.
+                        {t("tasksCardEmpty")}
                     </p>
                 </div>
             )}

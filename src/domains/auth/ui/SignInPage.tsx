@@ -1,20 +1,23 @@
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { SignInForm } from "./SignInForm";
 
-export function SignInPage() {
+export async function SignInPage() {
+    const t = await getTranslations("Auth.signIn");
+
     return (
         <>
             <div>
                 <p className="text-sm font-semibold uppercase tracking-widest text-secondary-700">
-                    Welcome back
+                    {t("eyebrow")}
                 </p>
 
                 <h1 className="mt-3 text-3xl font-bold text-grey-800">
-                    Sign in to ToGather
+                    {t("title")}
                 </h1>
 
                 <p className="mt-2 text-grey-500">
-                    Continue building your personal workspace.
+                    {t("subtitle")}
                 </p>
             </div>
 
@@ -23,12 +26,12 @@ export function SignInPage() {
             </div>
 
             <p className="mt-6 text-center text-sm text-grey-500">
-                Don't have an account?{" "}
+                {t("noAccount")}{" "}
                 <Link
                     href="/sign-up"
                     className="font-semibold text-secondary-700 transition-colors hover:text-secondary-800"
                 >
-                    Create one
+                    {t("createOne")}
                 </Link>
             </p>
         </>

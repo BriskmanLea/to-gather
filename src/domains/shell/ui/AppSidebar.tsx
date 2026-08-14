@@ -1,13 +1,19 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
 import { getFeatureByHref, useCurrentUserStore } from "@/domains/user";
 import { mainNavigation, secondaryNavigation, type NavigationItem } from "../model/navigation";
 
 type AppSidebarProps = {
     isOpen: boolean;
     onClose: () => void;
+};
+
+const NAV_LABEL_BY_HREF: Record<string, "home" | "tasks" | "settings"> = {
+    "/home": "home",
+    "/tasks": "tasks",
+    "/settings": "settings",
 };
 
 function isNavigationItemActive(pathname: string, href: string) {
@@ -48,7 +54,10 @@ type NavigationLinkProps = {
 };
 
 function NavigationLink({ item, pathname, onClick }: NavigationLinkProps) {
+    const t = useTranslations("Nav");
     const isActive = isNavigationItemActive(pathname, item.href);
+    const labelKey = NAV_LABEL_BY_HREF[item.href];
+    const label = labelKey ? t(labelKey) : item.label;
 
     return (
         <Link
@@ -60,7 +69,7 @@ function NavigationLink({ item, pathname, onClick }: NavigationLinkProps) {
                 isActive ? "bg-secondary-100 text-secondary-800" : "text-grey-500 hover:bg-white/70 hover:text-grey-800"
             ].join(" ")}
         >
-            {item.label}
+            {label}
         </Link>
     );
 }
@@ -72,6 +81,9 @@ type SidebarContentProps = {
 };
 
 function SidebarContent({ pathname, items, onNavigate }: SidebarContentProps) {
+    const tNav = useTranslations("Nav");
+    const tCommon = useTranslations("Common");
+
     return (
         <>
             <div className="flex items-center h-16 px-6 border-b border-neutral-400/60">
@@ -80,12 +92,12 @@ function SidebarContent({ pathname, items, onNavigate }: SidebarContentProps) {
                     onClick={onNavigate}
                     className="text-xl font-bold tracking-tight text-grey-800"
                 >
-                    ToGather
+                    {tCommon("brand")}
                 </Link>
             </div>
 
             <nav
-                aria-label="Main application navigation"
+                aria-label={tNav("mainAriaLabel")}
                 className="flex flex-col gap-1 flex-1 p-4"
             >
                 {items.map(item => (
@@ -99,7 +111,7 @@ function SidebarContent({ pathname, items, onNavigate }: SidebarContentProps) {
             </nav>
 
             <nav
-                aria-label="Secondary application navigation"
+                aria-label={tNav("secondaryAriaLabel")}
                 className="sticky bottom-0 p-4 border-t border-neutral-400/60"
             >
                 {secondaryNavigation.map(item => (
@@ -116,6 +128,7 @@ function SidebarContent({ pathname, items, onNavigate }: SidebarContentProps) {
 }
 
 export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
+    const t = useTranslations("Nav");
     const pathname = usePathname();
     const visibleMainNavigation = useVisibleMainNavigation();
 
@@ -132,7 +145,7 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
                 <div className="fixed lg:hidden inset-0 z-50">
                     <button
                         type="button"
-                        aria-label="Close navigation"
+                        aria-label={t("closeNavigation")}
                         onClick={onClose}
                         className="absolute inset-0 bg-grey-800/30 cursor-pointer"
                     />
@@ -141,7 +154,7 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
                         <button
                             type="button"
                             onClick={onClose}
-                            aria-label="Close navigation"
+                            aria-label={t("closeNavigation")}
                             className="absolute right-4 top-5 flex items-center justify-center size-10 rounded-full text-xl text-grey-500 transition-colors cursor-pointer hover:bg-white/70 hover:text-grey-800"
                         >
                             ×

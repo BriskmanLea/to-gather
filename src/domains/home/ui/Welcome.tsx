@@ -1,32 +1,32 @@
-function getCurrentDate() {
-    return new Intl.DateTimeFormat("en-US", {
-        weekday: "long",
-        month: "long",
-        day: "numeric",
-    }).format(new Date());
-}
+import { getFormatter, getTranslations } from "next-intl/server";
 
-function getGreeting() {
+function getGreetingKey() {
     const currentHour = new Date().getHours();
 
     if (currentHour < 12) {
-        return "Good morning";
+        return "greetingMorning" as const;
     }
 
     if (currentHour < 18) {
-        return "Good afternoon";
+        return "greetingAfternoon" as const;
     }
 
-    return "Good evening";
+    return "greetingEvening" as const;
 }
 
 type WelcomeProps = {
     firstName: string;
 };
 
-export function Welcome({ firstName }: WelcomeProps) {
-    const currentDate = getCurrentDate();
-    const greeting = getGreeting();
+export async function Welcome({ firstName }: WelcomeProps) {
+    const t = await getTranslations("Home");
+    const format = await getFormatter();
+    const currentDate = format.dateTime(new Date(), {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+    });
+    const greeting = t(getGreetingKey());
 
     return (
         <section>
@@ -35,11 +35,11 @@ export function Welcome({ firstName }: WelcomeProps) {
             </p>
 
             <h1 className="mt-3 text-3xl font-bold tracking-tight text-grey-800 md:text-4xl">
-                {greeting}, {firstName}
+                {t("greetingWithName", { greeting, firstName })}
             </h1>
 
             <p className="mt-2 max-w-2xl text-grey-500">
-                Here is an overview of your plans, habits and progress.
+                {t("subtitle")}
             </p>
         </section>
     );

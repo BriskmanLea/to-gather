@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { TASK_VIEWS, type TasksView } from "../model";
 
 type TasksViewTabsProps = {
@@ -5,7 +8,15 @@ type TasksViewTabsProps = {
     onChange: (value: TasksView) => void;
 };
 
+const VIEW_LABEL_KEYS = {
+    day: "viewDay",
+    week: "viewWeek",
+    month: "viewMonth",
+} as const;
+
 export function TasksViewTabs({ value, onChange }: TasksViewTabsProps) {
+    const t = useTranslations("Tasks");
+
     return (
         <div className="inline-flex gap-2 w-full rounded-xl bg-primary-100">
             {TASK_VIEWS.map(tab => {
@@ -18,7 +29,7 @@ export function TasksViewTabs({ value, onChange }: TasksViewTabsProps) {
                         onClick={() => onChange(tab.value)}
                         className={`w-full md:w-auto rounded-lg px-4 py-2 text-sm font-medium transition-all cursor-pointer ${active ? "bg-secondary-500 text-white shadow-sm" : "bg-secondary-100 text-grey-800 hover:bg-secondary-200"}`}
                     >
-                        {tab.label}
+                        {t(VIEW_LABEL_KEYS[tab.value])}
                     </button>
                 );
             })}
