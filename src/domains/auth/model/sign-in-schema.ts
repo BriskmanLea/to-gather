@@ -1,8 +1,12 @@
 import { z } from "zod";
 
-export const signInSchema = z.object({
-    email: z.string().trim().min(1, "Email is required").email("Enter a valid email address"),
-    password: z.string().min(1, "Password is required"),
-});
+type SignInTranslate = (key: "emailRequired" | "emailInvalid" | "passwordRequired") => string;
 
-export type SignInFormValues = z.infer<typeof signInSchema>;
+export function createSignInSchema(t: SignInTranslate) {
+    return z.object({
+        email: z.string().trim().min(1, t("emailRequired")).email(t("emailInvalid")),
+        password: z.string().min(1, t("passwordRequired")),
+    });
+}
+
+export type SignInFormValues = z.infer<ReturnType<typeof createSignInSchema>>;

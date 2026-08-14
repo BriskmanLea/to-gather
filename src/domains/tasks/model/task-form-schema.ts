@@ -1,15 +1,33 @@
 import { z } from "zod";
 
-const timeSchema = z.string().refine((value) => value === "" || /^([01]\d|2[0-3]):[0-5]\d$/.test(value), "Choose a valid time");
+type TaskFormMessages = {
+    (
+        key:
+            | "titleRequired"
+            | "titleMax"
+            | "descriptionMax"
+            | "dateInvalid"
+            | "timeInvalid"
+    ): string;
+};
 
-const prioritySchema = z.enum(["", "low", "medium", "high"]);
+export function createTaskFormSchema(t: TaskFormMessages) {
+    const timeSchema = z
+        .string()
+        .refine(
+            (value) => value === "" || /^([01]\d|2[0-3]):[0-5]\d$/.test(value),
+            t("timeInvalid")
+        );
 
-export const taskFormSchema = z.object({
-    title: z.string().trim().min(1, "Title is required").max(60, "Title must be at most 60 characters"),
-    description: z.string().trim().max(500, "Description must be at most 500 characters"),
-    priority: prioritySchema,
-    date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Choose a valid date"),
-    time: timeSchema,
-});
+    const prioritySchema = z.enum(["", "low", "medium", "high"]);
 
-export type TaskFormValues = z.infer<typeof taskFormSchema>;
+    return z.object({
+        title: z.string().trim().min(1, t("titleRequired")).max(60, t("titleMax")),
+        description: z.string().trim().max(500, t("descriptionMax")),
+        priority: prioritySchema,
+        date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, t("dateInvalid")),
+        time: timeSchema,
+    });
+}
+
+export type TaskFormValues = z.infer<ReturnType<typeof createTaskFormSchema>>;

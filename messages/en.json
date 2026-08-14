@@ -1,0 +1,273 @@
+{
+  "Metadata": {
+    "title": "ToGather",
+    "description": "Manage your daily life in one place"
+  },
+  "Common": {
+    "brand": "ToGather",
+    "cancel": "Cancel",
+    "saveChanges": "Save changes",
+    "saving": "Saving...",
+    "signIn": "Sign in",
+    "delete": "Delete",
+    "edit": "Edit",
+    "viewAll": "View all",
+    "completed": "Completed",
+    "language": "Language",
+    "english": "English",
+    "russian": "Russian"
+  },
+  "Nav": {
+    "home": "Home",
+    "tasks": "Tasks",
+    "settings": "Settings",
+    "mainAriaLabel": "Main application navigation",
+    "secondaryAriaLabel": "Secondary application navigation",
+    "openNavigation": "Open navigation",
+    "closeNavigation": "Close navigation",
+    "profile": "Profile"
+  },
+  "Landing": {
+    "header": {
+      "mainNavAriaLabel": "Main navigation",
+      "navFeatures": "Features",
+      "navAbout": "About",
+      "signIn": "Sign in",
+      "getStarted": "Get started"
+    },
+    "hero": {
+      "eyebrow": "Personal life operating system",
+      "title": "Plan, track and improve your life in one place",
+      "subtitle": "Organize your tasks, goals, notes, habits and personal progress through one customizable workspace.",
+      "cta": "Start planning"
+    },
+    "dashboardPreview": {
+      "greeting": "Good evening, User!",
+      "balanceBadge": "72% balanced",
+      "moduleTasksName": "Tasks",
+      "moduleTasksDescription": "4 tasks for today",
+      "moduleHabitsName": "Habits",
+      "moduleHabitsDescription": "3 of 5 completed",
+      "moduleGoalsName": "Goals",
+      "moduleGoalsDescription": "Monthly progress"
+    },
+    "features": {
+      "eyebrow": "Features",
+      "title": "Everything you need to organize your personal life",
+      "subtitle": "Enable only the modules you need and create a workspace that matches your lifestyle.",
+      "dailyPlanner": {
+        "label": "Productivity",
+        "title": "Daily planner",
+        "description": "Organize daily tasks, priorities and important activities in one place."
+      },
+      "notes": {
+        "label": "Knowledge",
+        "title": "Notes",
+        "description": "Save ideas, organize them with tags and quickly find what you need."
+      },
+      "goals": {
+        "label": "Growth",
+        "title": "Goals",
+        "description": "Create monthly and yearly goals and monitor progress over time."
+      },
+      "habitTracker": {
+        "label": "Consistency",
+        "title": "Habit tracker",
+        "description": "Build useful routines and understand how consistently you follow them."
+      },
+      "lifeBalance": {
+        "label": "Reflection",
+        "title": "Life balance",
+        "description": "Review important areas of your life and identify what needs attention."
+      },
+      "financeTracker": {
+        "label": "Finance",
+        "title": "Finance tracker",
+        "description": "Monitor personal expenses, income and progress toward financial goals."
+      }
+    },
+    "about": {
+      "eyebrow": "Why ToGather",
+      "title": "Your personal system should adapt to you",
+      "subtitle": "Productivity is not only about completing tasks. ToGather helps you connect everyday planning with long-term goals, habits and personal growth.",
+      "everythingInOnePlace": {
+        "title": "Everything in one place",
+        "description": "Keep tasks, habits, goals, notes and personal reflections inside one connected workspace."
+      },
+      "onlyToolsYouNeed": {
+        "title": "Only the tools you need",
+        "description": "Enable or disable modules and build a personal system that matches your lifestyle."
+      },
+      "seeYourProgress": {
+        "title": "See your progress",
+        "description": "Track consistency, review important life areas and understand what needs your attention."
+      }
+    },
+    "cta": {
+      "eyebrow": "Build your personal system",
+      "title": "Stop switching between multiple productivity apps",
+      "subtitle": "Choose your modules and keep your plans, progress and reflections in one connected workspace.",
+      "button": "Create your workspace"
+    },
+    "footer": {
+      "copyright": "© {year} ToGather. Personal productivity workspace.",
+      "features": "Features",
+      "github": "GitHub"
+    }
+  },
+  "Auth": {
+    "signIn": {
+      "eyebrow": "Welcome back",
+      "title": "Sign in to ToGather",
+      "subtitle": "Continue building your personal workspace.",
+      "noAccount": "Don't have an account?",
+      "createOne": "Create one",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "submit": "Sign in",
+      "submitting": "Signing in...",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Enter a valid email address",
+      "passwordRequired": "Password is required"
+    },
+    "signUp": {
+      "eyebrow": "Get started",
+      "title": "Create your account",
+      "subtitle": "Start building a personal workspace that adapts to you.",
+      "hasAccount": "Already have an account?",
+      "signInLink": "Sign in",
+      "nameLabel": "Name",
+      "namePlaceholder": "Your name",
+      "lastNameLabel": "Last name",
+      "lastNamePlaceholder": "Your last name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "At least 8 characters",
+      "confirmPasswordLabel": "Confirm password",
+      "confirmPasswordPlaceholder": "Repeat your password",
+      "submit": "Create account",
+      "submitting": "Creating account...",
+      "nameMin": "Name must contain at least 2 characters",
+      "nameMax": "Name must contain no more than 50 characters",
+      "lastNameMin": "Last name must contain at least 2 characters",
+      "lastNameMax": "Last name must contain no more than 50 characters",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Enter a valid email address",
+      "passwordMin": "Password must contain at least 8 characters",
+      "passwordUppercase": "Password must contain an uppercase letter",
+      "passwordLowercase": "Password must contain a lowercase letter",
+      "passwordNumber": "Password must contain a number",
+      "confirmPasswordRequired": "Confirm your password",
+      "passwordsMismatch": "Passwords do not match"
+    }
+  },
+  "Home": {
+    "greetingMorning": "Good morning",
+    "greetingAfternoon": "Good afternoon",
+    "greetingEvening": "Good evening",
+    "greetingWithName": "{greeting}, {firstName}",
+    "subtitle": "Here is an overview of your plans, habits and progress.",
+    "overviewAriaLabel": "Daily overview",
+    "tasksLabel": "Tasks",
+    "tasksDescription": "5 completed today",
+    "focusLabel": "Focus",
+    "focusDescription": "Weekly productivity",
+    "tasksCardTitle": "Today's tasks",
+    "tasksCardEmpty": "You have no tasks planned for today.",
+    "quickActionsTitle": "Quick actions",
+    "addTask": "Add task"
+  },
+  "Tasks": {
+    "title": "Tasks",
+    "subtitle": "Organize your tasks, track progress and stay productive.",
+    "newTask": "+ New task",
+    "viewDay": "Day",
+    "viewWeek": "Week",
+    "viewMonth": "Month",
+    "dayModeAriaLabel": "Day display mode",
+    "modeList": "List",
+    "modeSchedule": "Schedule",
+    "searchPlaceholder": "Search tasks...",
+    "allStatuses": "All statuses",
+    "allPriorities": "All priorities",
+    "statusTodo": "To do",
+    "statusCompleted": "Completed",
+    "priorityHigh": "High",
+    "priorityMedium": "Medium",
+    "priorityLow": "Low",
+    "priorityNone": "No priority",
+    "summaryTasks": "{total} Tasks",
+    "summaryTodo": "{todo} Todo",
+    "summaryCompleted": "{completed} Completed",
+    "emptyTitle": "No tasks found",
+    "emptyDescription": "Try changing your filters or create a new task.",
+    "noTimeAssigned": "No time assigned",
+    "dropToClearTime": "Drop tasks here to clear their time.",
+    "beforeHour": "Before {hour}",
+    "markAsCompleted": "Mark as completed",
+    "markAsTodo": "Mark as to do",
+    "markAsCompletedWithTitle": "Mark as completed: {title}",
+    "markAsTodoWithTitle": "Mark as to do: {title}",
+    "actionsFor": "Actions for {title}",
+    "titleLabel": "Title",
+    "titlePlaceholder": "What needs to be done?",
+    "descriptionLabel": "Description",
+    "descriptionPlaceholder": "Optional details",
+    "priorityLabel": "Priority",
+    "dateLabel": "Date",
+    "timeLabel": "Time",
+    "createSubmit": "Create task",
+    "editSubmit": "Save changes",
+    "titleRequired": "Title is required",
+    "titleMax": "Title must be at most 60 characters",
+    "descriptionMax": "Description must be at most 500 characters",
+    "dateInvalid": "Choose a valid date",
+    "timeInvalid": "Choose a valid time",
+    "createModalTitle": "New task",
+    "editModalTitle": "Edit task",
+    "deleteModalTitle": "Delete task",
+    "deleteConfirm": "Delete {title}? This cannot be undone."
+  },
+  "Settings": {
+    "title": "Settings",
+    "subtitle": "Manage your profile and feature preferences.",
+    "tabsAriaLabel": "Settings sections",
+    "tabProfile": "Profile",
+    "tabFeatures": "Features",
+    "tabTasks": "Tasks",
+    "profileTitle": "Personal details",
+    "profileSubtitle": "Update the information shown in your account.",
+    "firstNameLabel": "First name",
+    "lastNameLabel": "Last name",
+    "emailLabel": "Email",
+    "saved": "Changes saved",
+    "languageTitle": "Language",
+    "languageSubtitle": "Choose the language for the interface.",
+    "nameMin": "Name must contain at least 2 characters",
+    "nameMax": "Name must contain no more than 50 characters",
+    "lastNameMin": "Last name must contain at least 2 characters",
+    "lastNameMax": "Last name must contain no more than 50 characters",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Enter a valid email address",
+    "featuresTitle": "Features",
+    "featuresSubtitle": "Enable only the modules you need. Changes are saved automatically.",
+    "toggleAria": "{action} {label}",
+    "enable": "Enable",
+    "disable": "Disable",
+    "tasksTitle": "Tasks",
+    "tasksSubtitle": "Choose how the task schedule is displayed.",
+    "dayStartsAt": "Day starts at",
+    "dayStartsHint": "The schedule will run from this hour until midnight. Changes are saved automatically."
+  },
+  "Features": {
+    "tasksLabel": "Tasks",
+    "tasksDescription": "To-do lists and schedules for your work and life.",
+    "disabledTitle": "{label} is disabled",
+    "fallbackLabel": "This feature",
+    "disabledDescription": "Enable this feature in Settings to view it.",
+    "openSettings": "Open Settings"
+  }
+}

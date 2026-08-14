@@ -1,16 +1,51 @@
 import { z } from "zod";
 
-export const signUpSchema = z
-    .object({
-        name: z.string().trim().min(2, "Name must contain at least 2 characters").max(50, "Name must contain no more than 50 characters"),
-        lastName: z.string().trim().min(2, "Last name must contain at least 2 characters").max(50, "Last name must contain no more than 50 characters"),
-        email: z.string().trim().min(1, "Email is required").email("Enter a valid email address"),
-        password: z.string().min(8, "Password must contain at least 8 characters").regex(/[A-Z]/, "Password must contain an uppercase letter").regex(/[a-z]/, "Password must contain a lowercase letter").regex(/[0-9]/, "Password must contain a number"),
-        confirmPassword: z.string().min(1, "Confirm your password"),
-    })
-    .refine((data) => data.password === data.confirmPassword, {
-        message: "Passwords do not match",
-        path: ["confirmPassword"],
-    });
+type SignUpTranslate = (
+    key:
+        | "nameMin"
+        | "nameMax"
+        | "lastNameMin"
+        | "lastNameMax"
+        | "emailRequired"
+        | "emailInvalid"
+        | "passwordMin"
+        | "passwordUppercase"
+        | "passwordLowercase"
+        | "passwordNumber"
+        | "confirmPasswordRequired"
+        | "passwordsMismatch",
+) => string;
 
-export type SignUpFormValues = z.infer<typeof signUpSchema>;
+export function createSignUpSchema(t: SignUpTranslate) {
+    return z
+        .object({
+            name: z
+                .string()
+                .trim()
+                .min(2, t("nameMin"))
+                .max(50, t("nameMax")),
+            lastName: z
+                .string()
+                .trim()
+                .min(2, t("lastNameMin"))
+                .max(50, t("lastNameMax")),
+            email: z
+                .string()
+                .trim()
+                .min(1, t("emailRequired"))
+                .email(t("emailInvalid")),
+            password: z
+                .string()
+                .min(8, t("passwordMin"))
+                .regex(/[A-Z]/, t("passwordUppercase"))
+                .regex(/[a-z]/, t("passwordLowercase"))
+                .regex(/[0-9]/, t("passwordNumber")),
+            confirmPassword: z.string().min(1, t("confirmPasswordRequired")),
+        })
+        .refine((data) => data.password === data.confirmPassword, {
+            message: t("passwordsMismatch"),
+            path: ["confirmPassword"],
+        });
+}
+
+export type SignUpFormValues = z.infer<ReturnType<typeof createSignUpSchema>>;

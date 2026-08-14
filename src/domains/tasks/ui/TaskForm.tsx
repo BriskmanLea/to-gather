@@ -1,9 +1,11 @@
 "use client";
 
+import { useMemo } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { Button, DatePicker, Dropdown, FormField, Input, Textarea, TimePicker } from "@/shared/ui";
-import { TASK_PRIORITIES, taskFormSchema, type TaskFormValues } from "../model";
+import { TASK_PRIORITIES, createTaskFormSchema, type TaskFormValues } from "../model";
 
 type TaskFormProps = {
     defaultValues: TaskFormValues;
@@ -13,21 +15,30 @@ type TaskFormProps = {
 };
 
 export function TaskForm({ defaultValues, submitLabel, onSubmit, onCancel }: TaskFormProps) {
+    const t = useTranslations("Tasks");
+    const tCommon = useTranslations("Common");
+    const schema = useMemo(() => createTaskFormSchema(t), [t]);
     const {
         register,
         handleSubmit,
         formState: { errors, isSubmitting }
     } = useForm<TaskFormValues>({
-        resolver: zodResolver(taskFormSchema),
+        resolver: zodResolver(schema),
         defaultValues
     });
 
+    const priorityLabels = {
+        high: t("priorityHigh"),
+        medium: t("priorityMedium"),
+        low: t("priorityLow"),
+    } as const;
+
     return (
         <form className="grid gap-5" noValidate onSubmit={handleSubmit(onSubmit)}>
-            <FormField htmlFor="title" label="Title" error={errors.title?.message}>
+            <FormField htmlFor="title" label={t("titleLabel")} error={errors.title?.message}>
                 <Input
                     id="title"
-                    placeholder="What needs to be done?"
+                    placeholder={t("titlePlaceholder")}
                     aria-invalid={Boolean(errors.title)}
                     aria-describedby={errors.title ? "title-error" : undefined}
                     {...register("title")}
@@ -36,13 +47,13 @@ export function TaskForm({ defaultValues, submitLabel, onSubmit, onCancel }: Tas
 
             <FormField
                 htmlFor="description"
-                label="Description"
+                label={t("descriptionLabel")}
                 error={errors.description?.message}
             >
                 <Textarea
                     id="description"
                     rows={3}
-                    placeholder="Optional details"
+                    placeholder={t("descriptionPlaceholder")}
                     aria-invalid={Boolean(errors.description)}
                     aria-describedby={errors.description ? "description-error" : undefined}
                     {...register("description")}
@@ -51,17 +62,17 @@ export function TaskForm({ defaultValues, submitLabel, onSubmit, onCancel }: Tas
 
             <FormField
                 htmlFor="priority"
-                label="Priority"
+                label={t("priorityLabel")}
                 error={errors.priority?.message}
             >
                 <Dropdown
                     id="priority"
                     className="w-full"
                     options={[
-                        { value: "", label: "No priority" },
+                        { value: "", label: t("priorityNone") },
                         ...TASK_PRIORITIES.map((item) => ({
                             value: item.value,
-                            label: item.label,
+                            label: priorityLabels[item.value],
                         })),
                     ]}
                     aria-invalid={Boolean(errors.priority)}
@@ -71,7 +82,7 @@ export function TaskForm({ defaultValues, submitLabel, onSubmit, onCancel }: Tas
             </FormField>
 
             <div className="grid gap-5 sm:grid-cols-2">
-                <FormField htmlFor="date" label="Date" error={errors.date?.message}>
+                <FormField htmlFor="date" label={t("dateLabel")} error={errors.date?.message}>
                     <DatePicker
                         id="date"
                         className="w-full"
@@ -81,7 +92,7 @@ export function TaskForm({ defaultValues, submitLabel, onSubmit, onCancel }: Tas
                     />
                 </FormField>
 
-                <FormField htmlFor="time" label="Time" error={errors.time?.message}>
+                <FormField htmlFor="time" label={t("timeLabel")} error={errors.time?.message}>
                     <TimePicker
                         id="time"
                         aria-invalid={Boolean(errors.time)}
@@ -93,10 +104,10 @@ export function TaskForm({ defaultValues, submitLabel, onSubmit, onCancel }: Tas
 
             <div className="flex justify-end gap-3 pt-1">
                 <Button type="button" variant="secondary" onClick={onCancel} disabled={isSubmitting}>
-                    Cancel
+                    {tCommon("cancel")}
                 </Button>
                 <Button type="submit" disabled={isSubmitting}>
-                    {isSubmitting ? "Saving..." : submitLabel}
+                    {isSubmitting ? tCommon("saving") : submitLabel}
                 </Button>
             </div>
         </form>

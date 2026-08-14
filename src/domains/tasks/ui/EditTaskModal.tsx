@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Modal } from "@/shared/ui";
 import type { Task, TaskFormValues } from "../model";
 import { TaskForm } from "./TaskForm";
@@ -12,12 +13,14 @@ type EditTaskModalProps = {
 };
 
 export function EditTaskModal({ open, task, onClose, onSave }: EditTaskModalProps) {
+    const t = useTranslations("Tasks");
+
     if (!task) {
         return null;
     }
 
     return (
-        <Modal open={open} title="Edit task" onClose={onClose}>
+        <Modal open={open} title={t("editModalTitle")} onClose={onClose}>
             <TaskForm
                 key={task.id}
                 defaultValues={{
@@ -27,7 +30,7 @@ export function EditTaskModal({ open, task, onClose, onSave }: EditTaskModalProp
                     date: task.date,
                     time: task.time ?? "",
                 }}
-                submitLabel="Save changes"
+                submitLabel={t("editSubmit")}
                 onCancel={onClose}
                 onSubmit={onSave}
             />

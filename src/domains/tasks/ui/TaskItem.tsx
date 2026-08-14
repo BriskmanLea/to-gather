@@ -1,6 +1,7 @@
 "use client";
 
 import type { KeyboardEvent } from "react";
+import { useTranslations } from "next-intl";
 import { IconMenu } from "@/shared/ui";
 import type { Task } from "../model";
 
@@ -20,13 +21,15 @@ const priorityStyles = {
     low: "bg-success/15 text-success",
 };
 
-const priorityLabel = {
-    high: "High",
-    medium: "Medium",
-    low: "Low",
-};
+const priorityLabelKeys = {
+    high: "priorityHigh",
+    medium: "priorityMedium",
+    low: "priorityLow",
+} as const;
 
 export function TaskItem({ task, compact = false, dragEnabled = false, isDragging = false, onEdit, onDelete, onToggleComplete }: Props) {
+    const t = useTranslations("Tasks");
+    const tCommon = useTranslations("Common");
     const completed = task.status === "completed";
 
     function handleCardKeyDown(event: KeyboardEvent<HTMLElement>) {
@@ -40,7 +43,11 @@ export function TaskItem({ task, compact = false, dragEnabled = false, isDraggin
         <article
             role="button"
             tabIndex={0}
-            aria-label={completed ? `Mark as to do: ${task.title}` : `Mark as completed: ${task.title}`}
+            aria-label={
+                completed
+                    ? t("markAsTodoWithTitle", { title: task.title })
+                    : t("markAsCompletedWithTitle", { title: task.title })
+            }
             onClick={() => onToggleComplete(task)}
             onKeyDown={handleCardKeyDown}
             className={[
@@ -58,7 +65,7 @@ export function TaskItem({ task, compact = false, dragEnabled = false, isDraggin
                         event.stopPropagation();
                         onToggleComplete(task);
                     }}
-                    aria-label={completed ? "Mark as to do" : "Mark as completed"}
+                    aria-label={completed ? t("markAsTodo") : t("markAsCompleted")}
                     aria-pressed={completed}
                     className={[
                         "flex shrink-0 items-center justify-center rounded-full border text-xs transition-colors cursor-pointer",
@@ -99,14 +106,14 @@ export function TaskItem({ task, compact = false, dragEnabled = false, isDraggin
                     className={`flex flex-col gap-1 md:flex-row-reverse items-end md:items-center`}
                 >
                     <IconMenu
-                        label={`Actions for ${task.title}`}
+                        label={t("actionsFor", { title: task.title })}
                         items={[
                             {
-                                label: "Edit",
+                                label: tCommon("edit"),
                                 onSelect: () => onEdit(task),
                             },
                             {
-                                label: "Delete",
+                                label: tCommon("delete"),
                                 danger: true,
                                 onSelect: () => onDelete(task),
                             },
@@ -117,7 +124,7 @@ export function TaskItem({ task, compact = false, dragEnabled = false, isDraggin
                         <span
                             className={`rounded-full font-semibold ${compact ? "px-2 py-0.5 text-[11px]" : "px-2 py-1 text-xs md:px-3"} ${priorityStyles[task.priority]} ${completed ? "opacity-60" : ""}`}
                         >
-                            {priorityLabel[task.priority]}
+                            {t(priorityLabelKeys[task.priority])}
                         </span>
                     ) : null}
                 </div>

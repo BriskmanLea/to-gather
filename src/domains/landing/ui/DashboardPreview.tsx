@@ -1,27 +1,32 @@
 "use client";
 
+import { useLocale, useTranslations } from "next-intl";
+
 export function DashboardPreview() {
+    const t = useTranslations("Landing.dashboardPreview");
+    const locale = useLocale();
+
     const modules = [
         {
-            name: "Tasks",
-            description: "4 tasks for today",
+            name: t("moduleTasksName"),
+            description: t("moduleTasksDescription"),
             value: "75%",
         },
         {
-            name: "Habits",
-            description: "3 of 5 completed",
+            name: t("moduleHabitsName"),
+            description: t("moduleHabitsDescription"),
             value: "60%",
         },
         {
-            name: "Goals",
-            description: "Monthly progress",
+            name: t("moduleGoalsName"),
+            description: t("moduleGoalsDescription"),
             value: "42%",
         },
     ];
 
     const currentDate = new Date();
-    const day = currentDate.toLocaleDateString('en-US', { weekday: 'long' });
-    const month = currentDate.toLocaleDateString('en-US', { month: 'long' });
+    const day = currentDate.toLocaleDateString(locale, { weekday: "long" });
+    const month = currentDate.toLocaleDateString(locale, { month: "long" });
     const dayOfMonth = currentDate.getDate();
 
     return (
@@ -29,15 +34,17 @@ export function DashboardPreview() {
             <div className="rounded-2xl border border-neutral-400/50 bg-neutral-100 p-4">
                 <div className="flex flex-col md:flex-row items-start justify-between gap-4 mb-6">
                     <div>
-                        <p className="text-sm text-grey-500">{day}, {dayOfMonth} {month}</p>
+                        <p className="text-sm text-grey-500">
+                            {day}, {dayOfMonth} {month}
+                        </p>
 
                         <h2 className="mt-1 text-2xl font-semibold text-grey-800">
-                            Good evening, User! 👋
+                            {t("greeting")}
                         </h2>
                     </div>
 
                     <span className="rounded-full bg-secondary-100 px-2 py-1 text-sm font-medium text-secondary-800">
-                        72% balanced
+                        {t("balanceBadge")}
                     </span>
                 </div>
 

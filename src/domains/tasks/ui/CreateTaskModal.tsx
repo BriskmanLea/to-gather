@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Modal } from "@/shared/ui";
 import type { TaskFormValues } from "../model/task-form-schema";
 import { TaskForm } from "./TaskForm";
@@ -12,8 +13,10 @@ type CreateTaskModalProps = {
 };
 
 export function CreateTaskModal({ open, defaultDate, onClose, onCreate }: CreateTaskModalProps) {
+    const t = useTranslations("Tasks");
+
     return (
-        <Modal open={open} title="New task" onClose={onClose}>
+        <Modal open={open} title={t("createModalTitle")} onClose={onClose}>
             <TaskForm
                 key={open ? defaultDate : "closed"}
                 defaultValues={{
@@ -23,7 +26,7 @@ export function CreateTaskModal({ open, defaultDate, onClose, onCreate }: Create
                     date: defaultDate,
                     time: ""
                 }}
-                submitLabel="Create task"
+                submitLabel={t("createSubmit")}
                 onCancel={onClose}
                 onSubmit={onCreate}
             />

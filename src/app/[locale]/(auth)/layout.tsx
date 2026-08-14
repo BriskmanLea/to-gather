@@ -1,11 +1,14 @@
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import type { ReactNode } from "react";
 
 type AuthLayoutProps = {
     children: ReactNode;
 };
 
-export default function AuthLayout({ children }: AuthLayoutProps) {
+export default async function AuthLayout({ children }: AuthLayoutProps) {
+    const t = await getTranslations("Common");
+
     return (
         <main className="relative flex items-center justify-center min-h-screen px-4 py-10 overflow-hidden bg-neutral-100">
             <div
@@ -23,7 +26,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
                     href="/"
                     className="inline-block mb-6 text-xl font-bold tracking-tight text-grey-800 transition-colors hover:text-secondary-700"
                 >
-                    ToGather
+                    {t("brand")}
                 </Link>
 
                 <section className="p-6 rounded-3xl border border-neutral-400/50 bg-white/80 shadow-xl shadow-neutral-700/10 backdrop-blur-sm">

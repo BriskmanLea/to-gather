@@ -1,4 +1,7 @@
-import Link from "next/link";
+"use client";
+
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import type { CurrentUser } from "@/domains/user";
 
 type AppHeaderProps = {
@@ -11,6 +14,7 @@ function getInitials(user: CurrentUser) {
 }
 
 export function AppHeader({ user, onMenuOpen }: AppHeaderProps) {
+    const t = useTranslations("Nav");
     const initials = getInitials(user);
 
     return (
@@ -18,7 +22,7 @@ export function AppHeader({ user, onMenuOpen }: AppHeaderProps) {
             <button
                 type="button"
                 onClick={onMenuOpen}
-                aria-label="Open navigation"
+                aria-label={t("openNavigation")}
                 className="p-2 rounded-xl text-grey-700 transition-colors hover:bg-neutral-100 lg:hidden"
             >
                 ☰
@@ -35,7 +39,7 @@ export function AppHeader({ user, onMenuOpen }: AppHeaderProps) {
 
                 <Link
                     href="/profile"
-                    aria-label="Profile"
+                    aria-label={t("profile")}
                     className="flex items-center gap-3 p-1.5 rounded-xl transition-colors hover:bg-neutral-100"
                 >
                     <span className="flex items-center justify-center size-9 rounded-full bg-secondary-500 text-sm font-semibold text-white">
