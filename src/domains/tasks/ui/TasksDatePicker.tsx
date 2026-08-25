@@ -7,6 +7,6 @@ type Props = {
 
 export function TasksDatePicker({ value, onChange }: Props) {
     return (
-        <DatePicker value={value.toISOString().split("T")[0]} onChange={(e) => onChange(new Date(e.target.value))} />
+        <DatePicker value={value.toISOString().split("T")[0]} onChange={e => onChange(new Date(e.target.value))} />
     );
 }

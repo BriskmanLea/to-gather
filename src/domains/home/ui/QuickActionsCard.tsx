@@ -2,34 +2,24 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { useCurrentUserStore, type AppFeatureId } from "@/domains/user";
+import { useCurrentUserStore, AppFeatureId } from "@/domains/user";
 
 const quickActions: {
-    labelKey: "addTask";
+    labelKey: "addTask" | "trackHabit";
     href: string;
     featureId: AppFeatureId;
 }[] = [
-        {
-            labelKey: "addTask",
-            href: "/tasks/new",
-            featureId: "tasks",
-        },
-        // {
-        //     label: "Create note",
-        //     href: "/notes/new",
-        //     featureId: "notes",
-        // },
-        // {
-        //     label: "Track habit",
-        //     href: "/habits/new",
-        //     featureId: "habits",
-        // },
-        // {
-        //     label: "Add expense",
-        //     href: "/finance/new",
-        //     featureId: "finance",
-        // },
-    ];
+    {
+        labelKey: "addTask",
+        href: "/tasks",
+        featureId: "tasks",
+    },
+    {
+        labelKey: "trackHabit",
+        href: "/habits",
+        featureId: "habits",
+    },
+];
 
 export function QuickActionsCard() {
     const t = useTranslations("Home");
@@ -41,22 +31,19 @@ export function QuickActionsCard() {
     }
 
     return (
-        <article className="p-6 rounded-3xl border border-secondary-200 bg-secondary-100 shadow-sm shadow-neutral-700/5">
+        <article className="rounded-3xl border border-secondary-200 bg-secondary-100 p-6 shadow-sm shadow-neutral-700/5">
             <h2 className="text-xl font-semibold text-grey-800">
                 {t("quickActionsTitle")}
             </h2>
 
             <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
-                {visibleActions.map((action) => (
+                {visibleActions.map(action => (
                     <Link
                         key={action.href}
                         href={action.href}
-                        className="px-4 py-3 rounded-2xl border border-secondary-200 bg-white/70  font-medium text-grey-800 transition-colors hover:border-secondary-500 hover:bg-white"
+                        className="rounded-2xl border border-secondary-200 bg-white/70 px-4 py-3 font-medium text-grey-800 transition-colors hover:border-secondary-500 hover:bg-white"
                     >
-                        <span
-                            aria-hidden="true"
-                            className="mr-2 text-secondary-700"
-                        >
+                        <span aria-hidden="true" className="mr-2 text-secondary-700">
                             +
                         </span>
 

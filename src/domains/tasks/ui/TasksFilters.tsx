@@ -36,9 +36,9 @@ export function TasksFilters({ status, priority, onStatusChange, onPriorityChang
 
     return (
         <div className="flex justify-between gap-4">
-            <Dropdown options={statusOptions} value={status} onChange={(e) => onStatusChange(e.target.value as TaskStatus | "all")} />
+            <Dropdown options={statusOptions} value={status} onChange={e => onStatusChange(e.target.value as TaskStatus | "all")} />
 
-            <Dropdown options={priorityOptions} value={priority} onChange={(e) => onPriorityChange(e.target.value as TaskPriority | "all")} />
+            <Dropdown options={priorityOptions} value={priority} onChange={e => onPriorityChange(e.target.value as TaskPriority | "all")} />
         </div>
     );
 }

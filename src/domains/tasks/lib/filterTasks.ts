@@ -1,4 +1,11 @@
-import { endOfMonth, endOfWeek, isDateKeyInRange, startOfMonth, startOfWeek, toDateKey } from "@/shared/lib";
+import {
+    endOfMonth,
+    endOfWeek,
+    isDateKeyInRange,
+    startOfMonth,
+    startOfWeek,
+    toDateKey
+} from "@/shared/lib";
 import type { Task, TaskPriority, TaskStatus, TasksView } from "../model";
 
 type FilterParams = {
@@ -22,7 +29,14 @@ function matchesView(taskDate: string, view: TasksView, selectedDate: Date): boo
     return isDateKeyInRange(taskDate, startOfMonth(selectedDate), endOfMonth(selectedDate));
 }
 
-export function filterTasks({ tasks, view, selectedDate, search, status, priority }: FilterParams): Task[] {
+export function filterTasks({
+    tasks,
+    view,
+    selectedDate,
+    search,
+    status,
+    priority
+}: FilterParams): Task[] {
     const normalizedSearch = search.trim().toLowerCase();
 
     return tasks.filter(task => {

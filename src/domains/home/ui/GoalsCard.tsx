@@ -25,7 +25,7 @@ export function GoalsCard({ goals }: GoalsCardProps) {
 
             {goals.length > 0 ? (
                 <ul className="grid gap-5 mt-5">
-                    {goals.map((goal) => {
+                    {goals.map(goal => {
                         const progress = normalizeProgress(goal.progress);
 
                         return (

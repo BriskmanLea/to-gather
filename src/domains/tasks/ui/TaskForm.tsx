@@ -4,8 +4,16 @@ import { useMemo } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
-import { Button, DatePicker, Dropdown, FormField, Input, Textarea, TimePicker } from "@/shared/ui";
-import { TASK_PRIORITIES, createTaskFormSchema, type TaskFormValues } from "../model";
+import {
+    Button,
+    DatePicker,
+    Dropdown,
+    FormField,
+    Input,
+    Textarea,
+    TimePicker
+} from "@/shared/ui";
+import { TASK_PRIORITIES, createTaskFormSchema, TaskFormValues } from "../model";
 
 type TaskFormProps = {
     defaultValues: TaskFormValues;
@@ -18,11 +26,7 @@ export function TaskForm({ defaultValues, submitLabel, onSubmit, onCancel }: Tas
     const t = useTranslations("Tasks");
     const tCommon = useTranslations("Common");
     const schema = useMemo(() => createTaskFormSchema(t), [t]);
-    const {
-        register,
-        handleSubmit,
-        formState: { errors, isSubmitting }
-    } = useForm<TaskFormValues>({
+    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<TaskFormValues>({
         resolver: zodResolver(schema),
         defaultValues
     });
@@ -70,7 +74,7 @@ export function TaskForm({ defaultValues, submitLabel, onSubmit, onCancel }: Tas
                     className="w-full"
                     options={[
                         { value: "", label: t("priorityNone") },
-                        ...TASK_PRIORITIES.map((item) => ({
+                        ...TASK_PRIORITIES.map(item => ({
                             value: item.value,
                             label: priorityLabels[item.value],
                         })),

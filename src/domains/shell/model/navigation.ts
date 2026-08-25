@@ -12,10 +12,10 @@ export const mainNavigation: NavigationItem[] = [
         label: "Tasks",
         href: "/tasks",
     },
-    // {
-    //     label: "Habits",
-    //     href: "/habits",
-    // },
+    {
+        label: "Habits",
+        href: "/habits",
+    },
     // {
     //     label: "Goals",
     //     href: "/goals",

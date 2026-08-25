@@ -4,7 +4,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { CurrentUser } from "./types";
 import { currentUser } from "../api/current-user.data";
-import { DEFAULT_FEATURES, type AppFeatureId } from "./features";
+import { DEFAULT_FEATURES, AppFeatureId } from "./features";
 
 export type TasksPreferences = {
     dayStartHour: number;

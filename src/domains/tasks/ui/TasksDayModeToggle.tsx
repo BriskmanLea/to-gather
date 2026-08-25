@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { CalendarClock, List } from "lucide-react";
-import { DAY_DISPLAY_MODES, type DayDisplayMode } from "../model";
+import { DAY_DISPLAY_MODES, DayDisplayMode } from "../model";
 
 const modeIcons = { list: List, schedule: CalendarClock } as const;
 

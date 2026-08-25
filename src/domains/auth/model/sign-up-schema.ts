@@ -42,7 +42,7 @@ export function createSignUpSchema(t: SignUpTranslate) {
                 .regex(/[0-9]/, t("passwordNumber")),
             confirmPassword: z.string().min(1, t("confirmPasswordRequired")),
         })
-        .refine((data) => data.password === data.confirmPassword, {
+        .refine(data => data.password === data.confirmPassword, {
             message: t("passwordsMismatch"),
             path: ["confirmPassword"],
         });

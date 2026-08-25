@@ -27,7 +27,15 @@ const priorityLabelKeys = {
     low: "priorityLow",
 } as const;
 
-export function TaskItem({ task, compact = false, dragEnabled = false, isDragging = false, onEdit, onDelete, onToggleComplete }: Props) {
+export function TaskItem({
+    task,
+    compact = false,
+    dragEnabled = false,
+    isDragging = false,
+    onEdit,
+    onDelete,
+    onToggleComplete
+}: Props) {
     const t = useTranslations("Tasks");
     const tCommon = useTranslations("Common");
     const completed = task.status === "completed";
@@ -44,9 +52,7 @@ export function TaskItem({ task, compact = false, dragEnabled = false, isDraggin
             role="button"
             tabIndex={0}
             aria-label={
-                completed
-                    ? t("markAsTodoWithTitle", { title: task.title })
-                    : t("markAsCompletedWithTitle", { title: task.title })
+                completed ? t("markAsTodoWithTitle", { title: task.title }) : t("markAsCompletedWithTitle", { title: task.title })
             }
             onClick={() => onToggleComplete(task)}
             onKeyDown={handleCardKeyDown}
@@ -61,7 +67,7 @@ export function TaskItem({ task, compact = false, dragEnabled = false, isDraggin
             <div className={`flex items-center ${compact ? "gap-2" : "gap-2 md:gap-4"}`}>
                 <button
                     type="button"
-                    onClick={(event) => {
+                    onClick={event => {
                         event.stopPropagation();
                         onToggleComplete(task);
                     }}

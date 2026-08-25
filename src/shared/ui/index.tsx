@@ -23,5 +23,5 @@ export {
     Textarea,
     Modal,
     IconMenu,
-    LanguageSwitcher,
+    LanguageSwitcher
 };

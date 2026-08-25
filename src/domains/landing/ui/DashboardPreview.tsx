@@ -49,7 +49,7 @@ export function DashboardPreview() {
                 </div>
 
                 <div className="grid gap-3">
-                    {modules.map((module) => (
+                    {modules.map(module => (
                         <article
                             key={module.name}
                             className="rounded-2xl border border-neutral-400/40 bg-white/70 p-4"

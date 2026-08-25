@@ -38,7 +38,7 @@ export async function AboutSection() {
                     </div>
 
                     <div className="grid gap-4">
-                        {benefits.map((benefit) => (
+                        {benefits.map(benefit => (
                             <article
                                 key={benefit.number}
                                 className="grid gap-4 p-6 rounded-3xl border border-neutral-400/50 bg-primary-100 sm:grid-cols-[auto_1fr]"

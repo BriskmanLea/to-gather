@@ -1,17 +1,16 @@
 "use client";
 
 import type { Task } from "@/domains/tasks";
-import { useCurrentUserStore, type AppFeatureId } from "@/domains/user";
+import { useCurrentUserStore, AppFeatureId } from "@/domains/user";
 import type { Goal, Habit, OverviewItem } from "../model/types";
-// import { GoalsCard } from "./GoalsCard";
-// import { HabitsCard } from "./HabitsCard";
+import { HabitsCard } from "./HabitsCard";
 import { Overview } from "./Overview";
 import { QuickActionsCard } from "./QuickActionsCard";
 import { TasksCard } from "./TasksCard";
 
 const OVERVIEW_FEATURE_BY_LABEL: Record<string, AppFeatureId | null> = {
     Tasks: "tasks",
-    // Habits: "habits",
+    Habits: "habits",
     // Goals: "goals",
     Focus: null,
 };
@@ -19,7 +18,7 @@ const OVERVIEW_FEATURE_BY_LABEL: Record<string, AppFeatureId | null> = {
 const QUICK_ACTION_FEATURES: AppFeatureId[] = [
     "tasks",
     // "notes",
-    // "habits",
+    "habits",
     // "finance",
 ];
 
@@ -30,15 +29,10 @@ type HomeDashboardProps = {
     goals: Goal[];
 };
 
-export function HomeDashboard({
-    overview,
-    tasks,
-    // habits,
-    // goals,
-}: HomeDashboardProps) {
+export function HomeDashboard({ overview, tasks, habits }: HomeDashboardProps) {
     const features = useCurrentUserStore(state => state.features);
     const isTasksEnabled = features.tasks;
-    // const isHabitsEnabled = features.habits;
+    const isHabitsEnabled = features.habits;
     // const isGoalsEnabled = features.goals;
     const hasQuickActions = QUICK_ACTION_FEATURES.some(id => features[id]);
 
@@ -57,8 +51,7 @@ export function HomeDashboard({
         return features[featureId];
     });
 
-    const showPrimarySection = isTasksEnabled;
-    // || isHabitsEnabled;
+    const showPrimarySection = isTasksEnabled || isHabitsEnabled;
     const showSecondarySection = hasQuickActions;
     // || isGoalsEnabled;
 
@@ -69,18 +62,18 @@ export function HomeDashboard({
             ) : null}
 
             {showPrimarySection ? (
-                <section className="grid gap-6 xl:grid-cols-[1.4fr_1fr] mt-6">
+                <section className="mt-6 grid gap-6 xl:grid-cols-[1.4fr_1fr]">
                     {isTasksEnabled ? <TasksCard tasks={tasks} /> : null}
-                    {/* {isHabitsEnabled ? <HabitsCard habits={habits} /> : null} */}
+                    {isHabitsEnabled ? <HabitsCard habits={habits} /> : null}
                 </section>
             ) : null}
 
-            {/* {showSecondarySection ? (
-                <section className="grid gap-6 xl:grid-cols-[1.4fr_1fr] mt-6">
-                    {isGoalsEnabled ? <GoalsCard goals={goals} /> : null}
+            {showSecondarySection ? (
+                <section className="mt-6 grid gap-6 xl:grid-cols-[1.4fr_1fr]">
+                    {/* {isGoalsEnabled ? <GoalsCard goals={goals} /> : null} */}
                     {hasQuickActions ? <QuickActionsCard /> : null}
                 </section>
-            ) : null} */}
+            ) : null}
         </>
     );
 }

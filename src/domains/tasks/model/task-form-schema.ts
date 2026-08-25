@@ -15,7 +15,7 @@ export function createTaskFormSchema(t: TaskFormMessages) {
     const timeSchema = z
         .string()
         .refine(
-            (value) => value === "" || /^([01]\d|2[0-3]):[0-5]\d$/.test(value),
+            value => value === "" || /^([01]\d|2[0-3]):[0-5]\d$/.test(value),
             t("timeInvalid")
         );
 

@@ -4,18 +4,14 @@ import { useMemo } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
-import { createSignUpSchema, type SignUpFormValues } from "../model/sign-up-schema";
+import { createSignUpSchema, SignUpFormValues } from "../model/sign-up-schema";
 import { Button, FormField, Input } from "@/shared/ui";
 
 export function SignUpForm() {
     const t = useTranslations("Auth.signUp");
     const schema = useMemo(() => createSignUpSchema(t), [t]);
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors, isSubmitting },
-    } = useForm<SignUpFormValues>({
+    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<SignUpFormValues>({
         resolver: zodResolver(schema),
         defaultValues: {
             name: "",
@@ -113,9 +109,7 @@ export function SignUpForm() {
                     placeholder={t("confirmPasswordPlaceholder")}
                     aria-invalid={Boolean(errors.confirmPassword)}
                     aria-describedby={
-                        errors.confirmPassword
-                            ? "confirmPassword-error"
-                            : undefined
+                        errors.confirmPassword ? "confirmPassword-error" : undefined
                     }
                     {...register("confirmPassword")}
                 />

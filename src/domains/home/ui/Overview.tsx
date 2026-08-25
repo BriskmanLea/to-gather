@@ -24,15 +24,9 @@ export function Overview({ items }: OverviewProps) {
             aria-label={t("overviewAriaLabel")}
             className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4 mt-8"
         >
-            {items.map((item) => {
+            {items.map(item => {
                 const copy = OVERVIEW_COPY_BY_LABEL[item.label];
-                const displayItem: OverviewItem = copy
-                    ? {
-                        ...item,
-                        label: t(copy.label),
-                        description: t(copy.description),
-                    }
-                    : item;
+                const displayItem: OverviewItem = copy ? { ...item, label: t(copy.label), description: t(copy.description), } : item;
 
                 return (
                     <OverviewCard

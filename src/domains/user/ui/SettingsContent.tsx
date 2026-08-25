@@ -6,16 +6,20 @@ import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { Button, Dropdown, FormField, Input, LanguageSwitcher } from "@/shared/ui";
 import { APP_FEATURES, useCurrentUserStore, useFeatureEnabled } from "../model";
-import { createProfileSchema, type ProfileFormValues } from "../model/profile-schema";
+import { createProfileSchema, ProfileFormValues } from "../model/profile-schema";
 import type { AppFeatureId } from "../model/features";
 
 type SettingsTab = "profile" | "features" | "tasks";
 
 const FEATURE_COPY_KEYS: Record<
     AppFeatureId,
-    { label: "tasksLabel"; description: "tasksDescription" }
+    {
+        label: "tasksLabel" | "habitsLabel";
+        description: "tasksDescription" | "habitsDescription";
+    }
 > = {
     tasks: { label: "tasksLabel", description: "tasksDescription" },
+    habits: { label: "habitsLabel", description: "habitsDescription" },
 };
 
 function ProfileSettings() {
@@ -25,12 +29,7 @@ function ProfileSettings() {
     const updateUser = useCurrentUserStore(state => state.updateUser);
     const [isSaved, setIsSaved] = useState(false);
     const schema = useMemo(() => createProfileSchema(t), [t]);
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors, isSubmitting },
-    } = useForm<ProfileFormValues>({
+    const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<ProfileFormValues>({
         resolver: zodResolver(schema),
         defaultValues: {
             firstName: user.firstName,

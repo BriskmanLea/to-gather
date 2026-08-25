@@ -4,18 +4,14 @@ import { useMemo } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
-import { createSignInSchema, type SignInFormValues } from "../model/sign-in-schema";
+import { createSignInSchema, SignInFormValues } from "../model/sign-in-schema";
 import { Button, FormField, Input } from "@/shared/ui";
 
 export function SignInForm() {
     const t = useTranslations("Auth.signIn");
     const schema = useMemo(() => createSignInSchema(t), [t]);
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors, isSubmitting },
-    } = useForm<SignInFormValues>({
+    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<SignInFormValues>({
         resolver: zodResolver(schema),
         defaultValues: {
             email: "",

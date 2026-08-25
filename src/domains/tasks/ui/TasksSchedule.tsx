@@ -2,7 +2,18 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { DndContext, DragOverlay, MouseSensor, TouchSensor, closestCenter, useDraggable, useSensor, useSensors, type DragEndEvent, type DragStartEvent } from "@dnd-kit/core";
+import {
+    DndContext,
+    DragOverlay,
+    MouseSensor,
+    TouchSensor,
+    closestCenter,
+    useDraggable,
+    useSensor,
+    useSensors,
+    DragEndEvent,
+    DragStartEvent
+} from "@dnd-kit/core";
 import type { Task } from "../model";
 import { TaskItem } from "./TaskItem";
 import { ScheduleDropZone } from "./ScheduleDropZone";
@@ -43,7 +54,14 @@ function DraggableScheduleTask({ task, onEdit, onDelete, onToggleComplete }: Sch
     );
 }
 
-export function TasksSchedule({ tasks, dayStartHour, onEdit, onDelete, onToggleComplete, onAssignTime }: Props) {
+export function TasksSchedule({
+    tasks,
+    dayStartHour,
+    onEdit,
+    onDelete,
+    onToggleComplete,
+    onAssignTime
+}: Props) {
     const t = useTranslations("Tasks");
     const { untimed, beforeDayStart, byHour } = splitDayTasks(tasks, dayStartHour);
     const scheduleHours = getScheduleHours(dayStartHour);

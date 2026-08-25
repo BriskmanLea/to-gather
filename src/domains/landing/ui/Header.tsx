@@ -31,7 +31,7 @@ export async function Header() {
                     className="hidden md:flex items-center gap-8"
                     aria-label={t("mainNavAriaLabel")}
                 >
-                    {navigationItems.map((item) => (
+                    {navigationItems.map(item => (
                         <a
                             key={item.href}
                             href={item.href}
