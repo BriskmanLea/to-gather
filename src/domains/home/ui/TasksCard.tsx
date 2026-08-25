@@ -13,17 +13,17 @@ export function TasksCard({ tasks: initialTasks }: TasksCardProps) {
     const t = useTranslations("Home");
     const tCommon = useTranslations("Common");
     const {
-        tasks,
-        editingTask,
-        deletingTask,
-        setEditingTask,
-        setDeletingTask,
-        edit,
-        remove,
-        toggleComplete,
-        closeEdit,
-        closeDelete,
-    } = useTasks(initialTasks);
+            tasks,
+            editingTask,
+            deletingTask,
+            setEditingTask,
+            setDeletingTask,
+            edit,
+            remove,
+            toggleComplete,
+            closeEdit,
+            closeDelete
+        } = useTasks(initialTasks);
 
     return (
         <article className="p-6 rounded-3xl border border-neutral-400/50 bg-white shadow-sm shadow-neutral-700/5">

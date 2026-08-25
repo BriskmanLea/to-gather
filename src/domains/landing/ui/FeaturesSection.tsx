@@ -26,7 +26,7 @@ export async function FeaturesSection() {
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mt-4">
-                    {landingFeatures.map((feature) => (
+                    {landingFeatures.map(feature => (
                         <article
                             key={feature.id}
                             className="rounded-3xl border border-primary-200 bg-neutral-100 p-6 transition duration-200 hover:-translate-y-1 hover:border-primary-500 hover:shadow-lg"

@@ -21,22 +21,22 @@ type TasksContentProps = {
 
 export function TasksContent({ tasks: initialTasks }: TasksContentProps) {
     const {
-        tasks,
-        editingTask,
-        deletingTask,
-        isCreateOpen,
-        setEditingTask,
-        setDeletingTask,
-        setIsCreateOpen,
-        create,
-        edit,
-        remove,
-        toggleComplete,
-        assignTime,
-        closeEdit,
-        closeDelete,
-        closeCreate,
-    } = useTasks(initialTasks);
+            tasks,
+            editingTask,
+            deletingTask,
+            isCreateOpen,
+            setEditingTask,
+            setDeletingTask,
+            setIsCreateOpen,
+            create,
+            edit,
+            remove,
+            toggleComplete,
+            assignTime,
+            closeEdit,
+            closeDelete,
+            closeCreate
+        } = useTasks(initialTasks);
 
     const dayStartHour = useCurrentUserStore(state => state.tasksPreferences.dayStartHour);
     const [view, setView] = useState<TasksView>("day");

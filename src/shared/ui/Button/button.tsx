@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes, PropsWithChildren } from "react";
-import { getButtonClassName, type ButtonVariant } from "./button-styles";
+import { getButtonClassName, ButtonVariant } from "./button-styles";
 
 type ButtonProps = PropsWithChildren<
     ButtonHTMLAttributes<HTMLButtonElement> & {

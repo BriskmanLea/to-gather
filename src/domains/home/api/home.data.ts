@@ -7,57 +7,26 @@ export const homeData: HomeData = {
             value: "12",
             description: "5 completed today",
         },
-        // {
-        //     label: "Habits",
-        //     value: "4/6",
-        //     description: "Today's progress",
-        // },
+        {
+            label: "Habits",
+            value: "0/0",
+            description: "Today's progress",
+        },
         // {
         //     label: "Goals",
         //     value: "3",
         //     description: "2 active goals",
         // },
-        {
-            label: "Focus",
-            value: "78%",
-            description: "Weekly productivity",
-        },
+        // {
+        //     label: "Focus",
+        //     value: "78%",
+        //     description: "Weekly productivity",
+        // },
     ],
 
     tasks: [],
 
-    habits: [
-        // {
-        //     id: "habit-1",
-        //     title: "Drink 2L of water",
-        //     completed: true,
-        // },
-        // {
-        //     id: "habit-2",
-        //     title: "Morning stretching",
-        //     completed: true,
-        // },
-        // {
-        //     id: "habit-3",
-        //     title: "Read every day",
-        //     completed: true,
-        // },
-        // {
-        //     id: "habit-4",
-        //     title: "Meditation",
-        //     completed: false,
-        // },
-        // {
-        //     id: "habit-5",
-        //     title: "No sugar",
-        //     completed: false,
-        // },
-        // {
-        //     id: "habit-6",
-        //     title: "Sleep before 23:00",
-        //     completed: true,
-        // },
-    ],
+    habits: [],
 
     goals: [
         // {

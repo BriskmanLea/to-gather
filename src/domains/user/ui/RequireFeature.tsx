@@ -1,7 +1,7 @@
 "use client";
 
 import type { PropsWithChildren } from "react";
-import { useCurrentUserStore, useFeatureEnabled, type AppFeatureId } from "../model";
+import { useCurrentUserStore, useFeatureEnabled, AppFeatureId } from "../model";
 import { FeatureDisabledStub } from "./FeatureDisabledStub";
 
 type RequireFeatureProps = PropsWithChildren<{

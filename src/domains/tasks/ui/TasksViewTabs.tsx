@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { TASK_VIEWS, type TasksView } from "../model";
+import { TASK_VIEWS, TasksView } from "../model";
 
 type TasksViewTabsProps = {
     value: TasksView;

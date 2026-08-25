@@ -1,0 +1,1 @@
+export { HabitsPage as default } from "@/domains/habits";

@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState, type PropsWithChildren } from "react";
+import { useEffect, useState, PropsWithChildren } from "react";
 import { AppHeader } from "./AppHeader";
 import { AppSidebar } from "./AppSidebar";
-import { useCurrentUserStore, type CurrentUser } from "@/domains/user";
+import { useCurrentUserStore, CurrentUser } from "@/domains/user";
 
 type AppShellProps = PropsWithChildren<{
     user: CurrentUser;

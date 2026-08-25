@@ -6,5 +6,5 @@ export {
     startOfDay,
     startOfMonth,
     startOfWeek,
-    toDateKey,
+    toDateKey
 } from "./dates";

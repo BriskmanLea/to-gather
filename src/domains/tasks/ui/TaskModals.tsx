@@ -28,7 +28,7 @@ export function TaskModals({
     isCreateOpen = false,
     createDefaultDate,
     onCloseCreate,
-    onCreate,
+    onCreate
 }: TaskModalsProps) {
     return (
         <>

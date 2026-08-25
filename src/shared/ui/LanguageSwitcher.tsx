@@ -2,7 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { routing, type AppLocale } from "@/i18n/routing";
+import { routing, AppLocale } from "@/i18n/routing";
 
 type LanguageSwitcherProps = {
     className?: string;
@@ -36,9 +36,7 @@ export function LanguageSwitcher({ className = "" }: LanguageSwitcherProps) {
                         onClick={() => router.replace(pathname, { locale: item })}
                         className={[
                             "rounded-lg px-3 py-1.5 text-sm font-medium transition-colors cursor-pointer",
-                            isActive
-                                ? "bg-secondary-500 text-white shadow-sm"
-                                : "text-grey-800 hover:bg-secondary-100",
+                            isActive ? "bg-secondary-500 text-white shadow-sm" : "text-grey-800 hover:bg-secondary-100",
                         ].join(" ")}
                     >
                         {labels[item]}

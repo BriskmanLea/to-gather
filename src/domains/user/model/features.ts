@@ -1,10 +1,7 @@
-export type AppFeatureId =
-    | "tasks";
-    // | "today"
-    // | "habits"
-    // | "goals"
-    // | "notes"
-    // | "finance";
+export type AppFeatureId = "tasks" | "habits";
+// | "goals"
+// | "notes"
+// | "finance";
 
 export type AppFeature = {
     id: AppFeatureId;
@@ -14,24 +11,18 @@ export type AppFeature = {
 };
 
 export const APP_FEATURES: AppFeature[] = [
-    // {
-    //     id: "today",
-    //     label: "Today",
-    //     href: "/today",
-    //     description: "Daily planner for what's on your plate right now.",
-    // },
     {
         id: "tasks",
         label: "Tasks",
         href: "/tasks",
         description: "To-do lists and schedules for your work and life.",
     },
-    // {
-    //     id: "habits",
-    //     label: "Habits",
-    //     href: "/habits",
-    //     description: "Track routines and build consistency over time.",
-    // },
+    {
+        id: "habits",
+        label: "Habits",
+        href: "/habits",
+        description: "Track routines and build consistency over time.",
+    },
     // {
     //     id: "goals",
     //     label: "Goals",
@@ -53,9 +44,8 @@ export const APP_FEATURES: AppFeature[] = [
 ];
 
 export const DEFAULT_FEATURES: Record<AppFeatureId, boolean> = {
-    // today: true,
     tasks: true,
-    // habits: true,
+    habits: true,
     // goals: true,
     // notes: true,
     // finance: true,

@@ -1,6 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import type { ComponentProps, PropsWithChildren } from "react";
-import { getButtonClassName, type ButtonVariant } from "./button-styles";
+import { getButtonClassName, ButtonVariant } from "./button-styles";
 
 type ButtonLinkProps = PropsWithChildren<
     ComponentProps<typeof Link> & {

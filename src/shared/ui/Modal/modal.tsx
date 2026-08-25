@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode, useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 
 type ModalProps = {
     open: boolean;

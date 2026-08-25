@@ -2,10 +2,11 @@
 
 import { useTranslations } from "next-intl";
 import { ButtonLink } from "@/shared/ui";
-import { getFeatureById, type AppFeatureId } from "../model";
+import { getFeatureById, AppFeatureId } from "../model";
 
-const FEATURE_LABEL_KEY: Partial<Record<AppFeatureId, "tasksLabel">> = {
+const FEATURE_LABEL_KEY: Partial<Record<AppFeatureId, "tasksLabel" | "habitsLabel">> = {
     tasks: "tasksLabel",
+    habits: "habitsLabel",
 };
 
 type FeatureDisabledStubProps = {

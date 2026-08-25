@@ -10,6 +10,7 @@ export type Habit = {
     id: string;
     title: string;
     completed: boolean;
+    color: string;
 };
 
 export type Goal = {

@@ -3,16 +3,17 @@
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { getFeatureByHref, useCurrentUserStore } from "@/domains/user";
-import { mainNavigation, secondaryNavigation, type NavigationItem } from "../model/navigation";
+import { mainNavigation, secondaryNavigation, NavigationItem } from "../model/navigation";
 
 type AppSidebarProps = {
     isOpen: boolean;
     onClose: () => void;
 };
 
-const NAV_LABEL_BY_HREF: Record<string, "home" | "tasks" | "settings"> = {
+const NAV_LABEL_BY_HREF: Record<string, "home" | "tasks" | "habits" | "settings"> = {
     "/home": "home",
     "/tasks": "tasks",
+    "/habits": "habits",
     "/settings": "settings",
 };
 
